@@ -64,11 +64,11 @@ class Login extends Component {
                           </button>
                         </p>
                         <span className="help">
-                          <a href="forget.html">Mot de passe oublié ?</a>
+                          <Link to="/forget">Mot de passe oublié ?</Link>
                           {' '}
                           -
                           {' '}
-                          <a href="register.html">Pas encore inscrit ?</a>
+                          <Link to="/register">Pas encore inscrit ?</Link>
                         </span>
                       </div>
                     </div>
