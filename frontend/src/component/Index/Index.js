@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import './Index.css'
 
 class Index extends Component {
@@ -27,8 +29,8 @@ class Index extends Component {
               <div className="nav-item is-hidden-mobile">
                 <div className="field is-grouped">
                   <p className="control">
-                    <a href="" className="button tag is-danger is-large">
-                      Se connecter
+                    <a className="button tag is-danger is-large">
+                      <Link to="/Login">Se connecter</Link>
                     </a>
                   </p>
                 </div>
@@ -46,7 +48,7 @@ class Index extends Component {
                 de se <b>rencontrer</b>
               </p>
               <a href="" className="button tag is-danger is-large">
-                Découvrir Meet'In
+                <Link to="/Login">Découvrir Meet'In</Link>
               </a>
             </div>
           </div>

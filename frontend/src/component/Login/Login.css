@@ -1,0 +1,29 @@
+.is-gradient{
+  background-image:linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+}
+
+.is-hr {
+    position: relative;
+    color: rgba(0, 0, 0, 0.3);
+    height: 30px;
+    width: 100%;
+}
+
+.is-hr:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(19, 32, 71, 0.1),rgba(0, 0, 0, 0));
+}
+
+.is-hr span {
+    position: absolute;
+    top: 0px;
+    padding: 1px 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+}
