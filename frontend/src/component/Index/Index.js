@@ -10,7 +10,9 @@ class Index extends Component {
             <nav className="nav">
               <div className="nav-left">
                 <a className="nav-item">
-                  <span className="title has-text-white"><b>Meet</b>'In</span>
+                  <span className="title has-text-white">
+                    <b>Meet</b>'In
+                  </span>
                 </a>
               </div>
               <div className="nav-right is-hidden-tablet">

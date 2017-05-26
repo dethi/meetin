@@ -1,8 +1,6 @@
-.center{
-    margin: 0 auto;
-}
 
 .is-img{
     background: linear-gradient(to right, rgba(67,67,67, 0.5) 0%, rgba(0,0,0, 0.5) 100%),
                 url(./../../img/header.jpg) no-repeat center center fixed
 }
+
