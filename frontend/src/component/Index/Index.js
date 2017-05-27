@@ -29,14 +29,12 @@ class Index extends Component {
               <div className="nav-item is-hidden-mobile">
                 <div className="field is-grouped">
                   <p className="control">
-                    <a>
-                      <Link
-                        to="/Login"
-                        className="button tag is-danger is-medium"
-                      >
-                        Se connecter
-                      </Link>
-                    </a>
+                    <Link
+                      to="/login"
+                      className="button tag is-danger is-medium"
+                    >
+                      Se connecter
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -52,11 +50,9 @@ class Index extends Component {
               <p className="subtitle is-3 has-text-white">
                 de se <b>rencontrer</b>
               </p>
-              <a>
-                <Link to="/login" className="button tag is-danger is-large">
-                  Découvrir Meet'In
-                </Link>
-              </a>
+              <Link to="/dashboard" className="button tag is-danger is-large">
+                Découvrir Meet'In
+              </Link>
             </div>
           </div>
         </div>

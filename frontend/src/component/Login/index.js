@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 import './Login.css';
 
@@ -7,6 +8,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
+      redirectToReferrer: false,
       hasError: false,
       errorMsg: ''
     };
@@ -19,14 +21,29 @@ class Login extends Component {
       .signInWithPopup(provider)
       .then(res => {
         console.log(res.user);
-        this.setState({ hasError: false, errorMsg: '' });
+        this.setState({
+          redirectToReferrer: true,
+          hasError: false,
+          errorMsg: ''
+        });
       })
       .catch(err => {
-        this.setState({ hasError: true, errorMsg: err.message });
+        this.setState({
+          redirectToReferrer: false,
+          hasError: true,
+          errorMsg: err.message
+        });
       });
   };
 
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+
     const { hasError, errorMsg } = this.state;
 
     return (
