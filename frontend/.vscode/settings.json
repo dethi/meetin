@@ -5,7 +5,7 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120,
     "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "prettier.singleQuote": true,
     "prettier.semi": true,

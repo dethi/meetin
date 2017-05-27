@@ -53,7 +53,7 @@ class Index extends Component {
                 de se <b>rencontrer</b>
               </p>
               <a>
-                <Link to="/Login" className="button tag is-danger is-large">
+                <Link to="/login" className="button tag is-danger is-large">
                   Découvrir Meet'In
                 </Link>
               </a>
