@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // General settings
+    "files.trimTrailingWhitespace": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.trailingComma": "none",
+    "prettier.bracketSpacing": true,
+    "prettier.tabWidth": 2,
+    "prettier.printWidth": 80,
+    "eslint.run": "onSave"
+}

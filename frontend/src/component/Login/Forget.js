@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { resetPassword } from '../../config/auth'
-import './Forget.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { resetPassword } from '../../config/auth';
+import './Forget.css';
 
 class Forget extends Component {
   handleReset = e => {
-    e.preventDefault()
+    e.preventDefault();
     resetPassword(this.login.value).catch(error => {
-      console.log("It doesn't work")
-    })
-  }
+      console.log("It doesn't work");
+    });
+  };
 
   render() {
     return (
@@ -41,7 +41,7 @@ class Forget extends Component {
                               className="input email-input"
                               type="text"
                               placeholder="Adresse e-mail"
-                              ref={login => this.login = login}
+                              ref={login => (this.login = login)}
                             />
                             <span className="icon user">
                               <i className="fa fa-user" />
@@ -69,8 +69,8 @@ class Forget extends Component {
           </div>
         </form>
       </section>
-    )
+    );
   }
 }
 
-export default Forget
+export default Forget;

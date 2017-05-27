@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase';
 
 const config = {
   apiKey: 'AIzaSyCr5XQgRPaTD6WDJtbXREwGNMLF_lyrxKo',
@@ -7,9 +7,9 @@ const config = {
   projectId: 'jsproject-34dfd',
   storageBucket: 'jsproject-34dfd.appspot.com',
   messagingSenderId: '303524053697'
-}
+};
 
-firebase.initializeApp(config)
+firebase.initializeApp(config);
 
-export const ref = firebase.database().ref()
-export const firebaseAuth = firebase.auth
+export const ref = firebase.database().ref();
+export const firebaseAuth = firebase.auth;

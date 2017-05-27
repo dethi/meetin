@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import './Index.css'
+import './Index.css';
 
 class Index extends Component {
   render() {
@@ -61,8 +61,8 @@ class Index extends Component {
           </div>
         </div>
       </section>
-    )
+    );
   }
 }
 
-export default Index
+export default Index;

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { login } from '../../config/auth'
-import './Login.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { login } from '../../config/auth';
+import './Login.css';
 
 class Login extends Component {
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     login(this.login.value, this.password.value).catch(error => {
-      console.log("It doesn't work")
-    })
-  }
+      console.log("It doesn't work");
+    });
+  };
 
   render() {
     return (
@@ -53,7 +53,7 @@ class Login extends Component {
                               className="input email-input"
                               type="text"
                               placeholder="Adresse e-mail"
-                              ref={login => this.login = login}
+                              ref={login => (this.login = login)}
                             />
                             <span className="icon user">
                               <i className="fa fa-user" />
@@ -64,7 +64,7 @@ class Login extends Component {
                               className="input password-input"
                               type="password"
                               placeholder="Password"
-                              ref={password => this.password = password}
+                              ref={password => (this.password = password)}
                             />
                             <span className="icon user">
                               <i className="fa fa-lock" />
@@ -96,8 +96,8 @@ class Login extends Component {
         </form>
 
       </section>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;
