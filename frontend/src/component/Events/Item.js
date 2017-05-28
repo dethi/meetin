@@ -57,6 +57,11 @@ class Profile extends Component {
                     <hr />
                     <p>{this.state.description}</p>
                   </div>
+                  <div className="bottom-spaced">
+                    <p className="title">Plan</p>
+                    <hr />
+                    <p />
+                  </div>
                 </article>
               </div>
               <div className="tile is-parent is-vertical is-3">
