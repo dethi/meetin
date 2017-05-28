@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import firebase from 'firebase'
+import './Navbar.css'
 
 class Navbar extends Component {
   constructor(props) {
@@ -58,9 +59,6 @@ class Navbar extends Component {
             <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
             <a className="nav-item is-tab is-hidden-tablet">About</a>
             <Link className="nav-item is-tab" to="/profile">
-              <figure className="image is-16x16" style={{ marginRight: '8px' }}>
-                <img src="http://bulma.io/images/jgthms.png" alt="" />
-              </figure>
               Profile
             </Link>
             <Link className="nav-item is-tab" onClick={this.logout} to="/">
