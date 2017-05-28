@@ -17,7 +17,7 @@ class Navbar extends Component {
 
   logout(e) {
     e.preventDefault()
-    firebase.auth().signOut().then(res => {
+    firebase.auth().signOut().then(() => {
       this.setState({
         redirect: true,
         hasError: false,
