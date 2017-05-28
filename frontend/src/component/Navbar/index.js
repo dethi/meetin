@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Navbar extends Component {
   render() {
@@ -7,10 +7,7 @@ class Navbar extends Component {
         <div className="container">
           <div className="nav-left">
             <a className="nav-item">
-              <img
-                src="http://bulma.io/images/bulma-logo.png"
-                alt="MeetIn logo"
-              />
+              <span className="title"><b>Meet'</b>In</span>
             </a>
             <a className="nav-item is-tab is-hidden-mobile is-active">
               Accueil
@@ -39,8 +36,8 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar
