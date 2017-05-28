@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
   render() {
@@ -26,12 +27,12 @@ class Navbar extends Component {
             <a className="nav-item is-tab is-hidden-tablet">Features</a>
             <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
             <a className="nav-item is-tab is-hidden-tablet">About</a>
-            <a className="nav-item is-tab">
+            <Link className="nav-item is-tab" to="/profile">
               <figure className="image is-16x16" style={{ marginRight: '8px' }}>
                 <img src="http://bulma.io/images/jgthms.png" alt="" />
               </figure>
               Profile
-            </a>
+            </Link>
             <a className="nav-item is-tab">Log out</a>
           </div>
         </div>
