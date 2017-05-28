@@ -1,10 +1,11 @@
-import React from 'react';
-import Index from './Index';
-import Login from './Login';
-import Dashboard from './Dashboard';
-import { isAuthenticated } from '../utils';
-import './App.css';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import React from 'react'
+import Index from './Index'
+import Login from './Login'
+import Dashboard from './Dashboard'
+import Profile from './Profile'
+import { isAuthenticated } from '../utils'
+import './App.css'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -19,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             }}
           />}
   />
-);
+)
 
 const App = () => (
   <Router>
@@ -27,8 +28,9 @@ const App = () => (
       <Route exact path="/" component={Index} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <Route path="/profile" component={Profile} />
     </div>
   </Router>
-);
+)
 
-export default App;
+export default App
