@@ -1,5 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react'
+import NavBar from './../Navbar'
+import TitleBar from './../TitleBar'
 
-const Dashboard = () => <h1>It's work</h1>;
+class Dashboard extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <TitleBar title="Title" />
+        <h1>It's work</h1>
+      </div>
+    )
+  }
+}
 
-export default Dashboard;
+export default Dashboard
