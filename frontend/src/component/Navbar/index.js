@@ -8,6 +8,8 @@ class Navbar extends Component {
     super(props);
 
     this.state = {
+      teamId: 1,
+      isActive: false,
       redirect: false,
       hasError: false,
       errorMsg: ''
@@ -15,6 +17,10 @@ class Navbar extends Component {
 
     this.logout = this.logout.bind(this);
   }
+
+  toggleMenu = () => {
+    this.setState({ isActive: !this.state.isActive });
+  };
 
   logout(e) {
     e.preventDefault();
@@ -46,9 +52,9 @@ class Navbar extends Component {
         to: ''
       },
       {
-        id: 'price',
-        name: 'Pricing',
-        to: ''
+        id: 'team',
+        name: 'Mon Equipe',
+        to: '/team/' + this.state.teamId
       },
       {
         id: 'about',
@@ -68,7 +74,7 @@ class Navbar extends Component {
               return (
                 <Link
                   className={
-                    'nav-item is-tab is-hidden-mobile ' +
+                    'nav-item is-tab is-primary is-hidden-mobile ' +
                       (this.props.menuActive === m.id ? 'is-active' : '')
                   }
                   key={'menu-' + i}
@@ -79,17 +85,21 @@ class Navbar extends Component {
               );
             })}
           </div>
-          <span className="nav-toggle">
+          <span className="nav-toggle" onClick={this.toggleMenu}>
             <span />
             <span />
             <span />
           </span>
-          <div className="nav-right nav-menu">
+          <div
+            className={
+              'nav-right nav-menu ' + (this.state.isActive ? 'is-active' : '')
+            }
+          >
             {menus.map((m, i) => {
               return (
                 <Link
                   className={
-                    'nav-item is-tab is-hidden-tablet ' +
+                    'nav-item is-tab is-hidden-tablet is-primary ' +
                       (this.props.menuActive === m.id ? 'is-active' : '')
                   }
                   key={'mobile-menu-' + i}
@@ -101,7 +111,7 @@ class Navbar extends Component {
             })}
             <Link
               className={
-                'nav-item is-tab ' +
+                'nav-item is-tab is-primary ' +
                   (this.props.menuActive === 'profile' ? 'is-active' : '')
               }
               to="/profile"
