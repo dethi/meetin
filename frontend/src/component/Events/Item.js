@@ -16,7 +16,7 @@ class Item extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar menuActive="events" />
         <TitleBar title={this.state.title + ': ' + this.state.id} />
         <div className="section container">
           <div className="tile is-vertical">
