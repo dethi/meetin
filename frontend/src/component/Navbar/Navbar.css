@@ -1,0 +1,4 @@
+.nav-item a.is-tab.is-active, a.nav-item.is-tab.is-active{
+    color: #FF874E;
+    border-bottom: 3px solid #FF874E;
+}

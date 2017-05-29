@@ -1,8 +1,39 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import firebase from 'firebase'
+import './Navbar.css'
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      redirect: false,
+      hasError: false,
+      errorMsg: ''
+    }
+
+    this.logout = this.logout.bind(this)
+  }
+
+  logout(e) {
+    e.preventDefault()
+    firebase.auth().signOut().then(() => {
+      this.setState({
+        redirect: true,
+        hasError: false,
+        errorMsg: ''
+      })
+    })
+  }
+
   render() {
+    const { redirect } = this.state
+
+    if (redirect) {
+      return <Redirect to="/" />
+    }
+
     return (
       <nav className="nav has-shadow">
         <div className="container">
@@ -28,12 +59,11 @@ class Navbar extends Component {
             <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
             <a className="nav-item is-tab is-hidden-tablet">About</a>
             <Link className="nav-item is-tab" to="/profile">
-              <figure className="image is-16x16" style={{ marginRight: '8px' }}>
-                <img src="http://bulma.io/images/jgthms.png" alt="" />
-              </figure>
               Profile
             </Link>
-            <a className="nav-item is-tab">Log out</a>
+            <Link className="nav-item is-tab" onClick={this.logout} to="/">
+              Log out
+            </Link>
           </div>
         </div>
       </nav>
