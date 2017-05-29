@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import NavBar from './../Navbar'
-import TitleBar from './../TitleBar'
+import React, { Component } from 'react';
+import NavBar from './../Navbar';
+import TitleBar from './../TitleBar';
 
-class Profile extends Component {
+class Item extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
+      id: this.props.match.params.id,
       title: 'Partie de foot',
       profile_picture: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt odio consectetur, dapibus ex. Suspendisse auctor fringilla elit vitae bibendum. Etiam vel risus eget nibh imperdiet dapibus. In hac habitasse platea dictumst. Proin tristique elit in facilisis sagittis. Proin et odio dapibus, ultricies sem nec, sollicitudin lorem. Duis quis justo ut augue consectetur mollis ut quis nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nisi nibh, convallis sed finibus non, facilisis tempor risus. Integer efficitur eros eu orci porttitor, id bibendum quam sagittis. Nunc non enim sagittis, aliquet turpis sit amet, auctor magna.'
-    }
+    };
   }
   render() {
     return (
       <div>
         <NavBar />
-        <TitleBar title={this.state.title} />
+        <TitleBar title={this.state.title + ': ' + this.state.id} />
         <div className="section container">
           <div className="tile is-vertical">
             <div className="tile">
@@ -66,7 +67,7 @@ class Profile extends Component {
               </div>
               <div className="tile is-parent is-vertical is-3">
                 <article className="tile is-child">
-                  <figure class="image is-square">
+                  <figure className="image is-square">
                     <img
                       src={this.state.profile_picture}
                       alt="profile_picture"
@@ -91,8 +92,8 @@ class Profile extends Component {
 
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Profile
+export default Item;
