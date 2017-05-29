@@ -4,6 +4,8 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import Profile from './Profile';
 import Event from './Events/Item';
+import Team from './Team';
+
 import { isAuthenticated } from '../utils';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -31,6 +33,7 @@ const App = () => (
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <Route path="/profile" component={Profile} />
       <Route path="/event/:id" component={Event} />
+      <Route path="/team/:id" component={Team} />
     </div>
   </Router>
 );

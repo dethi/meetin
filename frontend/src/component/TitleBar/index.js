@@ -4,7 +4,8 @@ import './TitleBar.css';
 class TitleBar extends Component {
   render() {
     const box = {
-      backgroundColor: '#FF874E'
+      backgroundColor: '#FF874E',
+      marginBottom: '20px'
     };
 
     const bar = {

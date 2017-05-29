@@ -1,4 +1,4 @@
-.nav-item a.is-tab.is-active, a.nav-item.is-tab.is-active{
-    color: #FF874E;
-    border-bottom: 3px solid #FF874E;
+.nav-item a.is-tab.is-active.is-primary, a.nav-item.is-tab.is-active.is-primary {
+    color: #9e4b0f;
+    border-bottom: 3px solid #9e4b0f;
 }
