@@ -25,11 +25,8 @@ class EventItem extends Component {
                 <span className="title is-3">
                   <strong>{this.props.name}</strong>
                 </span>
-                {' '}
-                <span
-                  className="icon is-small"
-                  style={{ marginLeft: '10px', marginRight: '5px' }}
-                >
+                <br />
+                <span className="icon is-small" style={{ marginRight: '5px' }}>
                   <i className="fa fa-calendar" aria-hidden="true" />
                 </span>
                 <span>
@@ -38,6 +35,7 @@ class EventItem extends Component {
                 <span className="hspaced">-</span>
                 <small>{this.props.time}</small>
               </p>
+
               <p>{this.props.description}</p>
             </div>
           </div>
@@ -57,7 +55,7 @@ class Dashboard extends Component {
           id: 1,
           name: 'Pizza',
           date: '11/10/2017',
-          time: 'Midi',
+          time: 'Soir',
           description: 'Petite pizza oklm',
           icon: 'https://image.flaticon.com/icons/svg/167/167741.svg',
           outdated: false
@@ -75,7 +73,7 @@ class Dashboard extends Component {
           id: 1,
           name: 'Etudes',
           date: '11/10/2017',
-          time: 'Midi',
+          time: 'Aprem',
           description: 'Avec la team',
           icon: 'https://image.flaticon.com/icons/svg/167/167729.svg',
           outdated: true

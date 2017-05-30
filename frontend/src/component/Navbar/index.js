@@ -54,7 +54,7 @@ class Navbar extends Component {
       },
       {
         id: 'discover',
-        name: 'Découverte',
+        name: 'Découvrir',
         to: '/discover'
       }
     ];

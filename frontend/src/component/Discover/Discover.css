@@ -1,0 +1,99 @@
+.flipcard-container {
+  width: 300px;
+  height: 420px;
+  position: relative;
+  display: inline-block;
+  margin: 15px 25px;
+  perspective: 800px;
+}
+
+.flipcard {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+
+.flipcard > div {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flipcard .front {
+  transform: rotateY( 180deg );
+}
+.flipcard .back {
+  background: url(
+  https://s-media-cache-ak0.pinimg.com/originals/91/69/ef/9169ef73b3564976a7dc564d66861027.png) center center;
+  background-size: cover;
+}
+
+
+.flipcard.flipped {
+  transform: rotateY( 180deg );
+}
+
+.flipcard-container.center {
+  z-index: 10;
+}
+
+.flipcard-container.left:not(.hasSelected) {
+    right: -350px;
+    animation: shuffle-left 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.flipcard-container.right:not(.hasSelected) {
+    left: -350px;
+    animation: shuffle-right 1s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes shuffle-left {
+    0% { right: -350px; }
+    20% { right: 0; }
+    40% { right: -350px; z-index: 15;}
+    60% { right: 0; z-index: 1;}
+    80% { right: -400px;}
+    100% { right: 0;}
+}
+
+@keyframes shuffle-right {
+    0% { left: -350px; }
+    20% { left: 0; }
+    40% { left: -350px; }
+    60% { left: 0; }
+    80% { left: -400px; z-index: 15;}
+    100% { left: 0; z-index: 1;}
+}
+
+
+.flipcard-container.isSelected {
+    z-index: 200;
+}
+
+.flipcard-container.right.hasSelected {
+    animation: slide-right 1s forwards;
+}
+
+.flipcard-container.left.hasSelected {
+    animation: slide-left 1s forwards;
+}
+
+@keyframes slide-left {
+    0% { right: 0%}
+    100% { right: -350px; }
+}
+
+@keyframes slide-right {
+    0% { left: 0%}
+    100% { left: -350px; }
+}
+
+

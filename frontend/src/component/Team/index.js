@@ -93,6 +93,7 @@ class Team extends Component {
                       </div>
                     </div>
                   </div>
+
                 </div>
               );
             })}

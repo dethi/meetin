@@ -10,6 +10,7 @@ import Profile from './Profile';
 import Event from './Events/Item';
 import Team from './Team';
 import Evenement from './Evenement';
+import Discover from './Discover';
 
 import { isAuthenticated } from '../utils';
 import './App.css';
@@ -69,6 +70,7 @@ export default class App extends Component {
             <Route exact path="/" component={Index} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
+            <Route path="/discover" component={Discover} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/evenement" component={Evenement} />
             <PrivateRoute path="/event/:id" component={Event} />
