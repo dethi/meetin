@@ -21,21 +21,25 @@ class Profile extends Component {
           <div className="tile is-vertical">
             <div className="tile">
               <div className="tile is-parent is-vertical is-4">
-                <article className="tile is-child">
-                  <figure className="image is-square">
-                    <img
-                      src={this.state.profile_picture}
-                      alt="profile_picture"
-                    />
-                  </figure>
-                </article>
-                <article className="tile is-child notification is-danger">
-                  <p className="title">Infos</p>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt
-                  </p>
-                </article>
+                <div className="box-padded">
+                  <article className="tile is-child">
+                    <figure className="image is-square">
+                      <img
+                        src={this.state.profile_picture}
+                        alt="profile_picture"
+                      />
+                    </figure>
+                  </article>
+                </div>
+                <div className="box-padded">
+                  <article className="tile is-child notification is-danger">
+                    <p className="title">Infos</p>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt
+                    </p>
+                  </article>
+                </div>
               </div>
               <div className="tile is-parent">
                 <article className="tile is-child">
