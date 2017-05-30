@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
@@ -9,30 +10,37 @@ class Team extends Component {
     this.state = {
       users: [
         {
+          id: 1,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 2,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 3,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 4,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 5,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 6,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         },
         {
+          id: 7,
           name: '',
           url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
         }
@@ -49,9 +57,13 @@ class Team extends Component {
           <div className="columns column is-8 is-offset-2 is-multiline">
             {this.state.users.map((e, i) => {
               return (
-                <div className="column is-4" key={'user-' + i}>
+                <Link
+                  className="column is-4"
+                  key={'user-' + i}
+                  to={'/user/' + e.id}
+                >
 
-                  <div className="card pointer">
+                  <div className="card boxed">
                     <div className="card-image">
                       <figure className="image is-square">
                         <img src={e.url} alt="profile_picture" />
@@ -61,13 +73,13 @@ class Team extends Component {
                       <div className="media">
                         <div className="media-content">
                           <p className="title is-4">John Smith</p>
-                          <p className="subtitle is-5">Director</p>
+                          <p className="subtitle is-6">Director</p>
                           <p className="subtitle is-6">@johnsmith</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

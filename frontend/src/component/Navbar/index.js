@@ -52,9 +52,9 @@ class Navbar extends Component {
         to: ''
       },
       {
-        id: 'team',
-        name: 'Mon Equipe',
-        to: '/team/' + this.state.teamId
+        id: 'discover',
+        name: 'Découverte',
+        to: '/discover'
       },
       {
         id: 'about',
@@ -109,6 +109,15 @@ class Navbar extends Component {
                 </Link>
               );
             })}
+            <Link
+              className={
+                'nav-item is-tab is-primary ' +
+                  (this.props.menuActive === 'team' ? 'is-active' : '')
+              }
+              to={'/team/' + this.state.teamId}
+            >
+              Mon equipe
+            </Link>
             <Link
               className={
                 'nav-item is-tab is-primary ' +
