@@ -7,15 +7,19 @@
 }
 
 .box-evenement:hover{
-        background-color: #FF874E;
+        background-color:#9E4B0F;
         cursor: pointer;
 
 }
 
-.Box--img {
+.Box__img {
     display: block;
     margin: auto;
     width: 200px;
     height: 100px;
     margin-top: 15px;
+}
+
+.Box--selected{
+    background-color: #FF874E;
 }

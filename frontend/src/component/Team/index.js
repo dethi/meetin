@@ -62,7 +62,6 @@ class Team extends Component {
                   key={'user-' + i}
                   to={'/user/' + e.id}
                 >
-
                   <div className="card boxed">
                     <div className="card-image">
                       <figure className="image is-square">

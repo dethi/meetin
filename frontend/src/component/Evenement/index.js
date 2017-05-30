@@ -14,6 +14,19 @@ class Evenement extends Component {
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
             <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
