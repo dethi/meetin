@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
@@ -17,7 +16,7 @@ class EventItem extends Component {
         <article className="media">
           <div className="media-left is-vcentered">
             <figure className="image is-128x128" style={{ padding: '20px' }}>
-              <img src={this.props.icon} alt="Image" />
+              <img src={this.props.icon} alt={this.props.name} />
             </figure>
           </div>
           <div className="media-content is-vcentered">
