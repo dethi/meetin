@@ -9,12 +9,14 @@ class Evenement extends Component {
       <div>
         <NavBar menuActive="events" />
         <TitleBar title="Chosissez votre évenement" />
-        <div className="columns is-multiline is-mobile">
-          <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
-          <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
-          <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
-          <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
-          <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+        <div className="container">
+          <div className="columns column is-8 is-offset-2 is-multiline">
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+            <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
+          </div>
         </div>
       </div>
     );
