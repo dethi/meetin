@@ -13,14 +13,7 @@ class Evenement extends Component {
   }
 
   handleOnClick = e => {
-    console.log(e);
     this.setState({ indexSelected: e });
-  };
-
-  getInitialState = () => {
-    return {
-      step: 1
-    };
   };
 
   render() {
