@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import { Link, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 import './Navbar.css';
@@ -55,11 +56,6 @@ class Navbar extends Component {
         id: 'discover',
         name: 'Découverte',
         to: '/discover'
-      },
-      {
-        id: 'about',
-        name: 'About',
-        to: ''
       }
     ];
 
@@ -73,10 +69,15 @@ class Navbar extends Component {
             {menus.map((m, i) => {
               return (
                 <Link
-                  className={
-                    'nav-item is-tab is-primary is-hidden-mobile ' +
-                      (this.props.menuActive === m.id ? 'is-active' : '')
-                  }
+                  className={classNames(
+                    'nav-item',
+                    'is-tab',
+                    'is-hidden-mobile',
+                    'is-primary',
+                    {
+                      'is-active': this.props.menuActive === m.id
+                    }
+                  )}
                   key={'menu-' + i}
                   to={m.to}
                 >
@@ -98,10 +99,15 @@ class Navbar extends Component {
             {menus.map((m, i) => {
               return (
                 <Link
-                  className={
-                    'nav-item is-tab is-hidden-tablet is-primary ' +
-                      (this.props.menuActive === m.id ? 'is-active' : '')
-                  }
+                  className={classNames(
+                    'nav-item',
+                    'is-tab',
+                    'is-hidden-tablet',
+                    'is-primary',
+                    {
+                      'is-active': this.props.menuActive === m.id
+                    }
+                  )}
                   key={'mobile-menu-' + i}
                   to={m.to}
                 >

@@ -14,14 +14,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      (isAuthenticated()
+      isAuthenticated()
         ? <Component {...props} />
         : <Redirect
             to={{
               pathname: '/login',
               state: { from: props.location }
             }}
-          />)}
+          />}
   />
 );
 
@@ -31,8 +31,8 @@ const App = () => (
       <Route exact path="/" component={Index} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
-      <PrivateRoute path="/evenement" component={Evenement} />
       <Route path="/profile" component={Profile} />
+      <Route path="/evenement" component={Evenement} />
       <Route path="/event/:id" component={Event} />
       <Route path="/team/:id" component={Team} />
     </div>
