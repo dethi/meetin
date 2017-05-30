@@ -1,0 +1,16 @@
+.box-evenement{
+    height: 150px;
+    width: 20%;
+    background-color: #F5F5F5;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.Box--img {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    margin-top: 15px;
+}
