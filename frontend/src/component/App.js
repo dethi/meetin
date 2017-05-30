@@ -30,7 +30,7 @@ const App = () => (
     <div>
       <Route exact path="/" component={Index} />
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/profile" component={Profile} />
       <Route path="/evenement" component={Evenement} />
       <Route path="/event/:id" component={Event} />
