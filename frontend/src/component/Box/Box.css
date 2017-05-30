@@ -6,6 +6,12 @@
     border-radius: 8px;
 }
 
+.box-evenement:hover{
+        background-color: #FF874E;
+        cursor: pointer;
+
+}
+
 .Box--img {
     display: block;
     margin: auto;
