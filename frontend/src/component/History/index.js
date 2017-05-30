@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
-class Team extends Component {
+class History extends Component {
   constructor(props) {
     super(props);
 
@@ -65,8 +65,8 @@ class Team extends Component {
   render() {
     return (
       <div>
-        <NavBar menuActive="team" />
-        <TitleBar title="Mon equipe" />
+        <NavBar menuActive="history" />
+        <TitleBar title="Mon Historique" />
         <div className="container">
           <div className="columns column is-8-desktop is-offset-2-desktop is-multiline">
             {this.state.users.map((e, i) => {
@@ -104,4 +104,4 @@ class Team extends Component {
   }
 }
 
-export default Team;
+export default History;

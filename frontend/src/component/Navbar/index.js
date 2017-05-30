@@ -118,11 +118,11 @@ class Navbar extends Component {
             <Link
               className={
                 'nav-item is-tab is-primary ' +
-                  (this.props.menuActive === 'team' ? 'is-active' : '')
+                  (this.props.menuActive === 'history' ? 'is-active' : '')
               }
-              to={'/team/' + this.state.teamId}
+              to={'/history'}
             >
-              Mon equipe
+              Historique
             </Link>
             <Link
               className={

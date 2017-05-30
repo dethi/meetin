@@ -8,7 +8,7 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import Profile from './Profile';
 import Event from './Events/Item';
-import Team from './Team';
+import History from './History';
 import Evenement from './Evenement';
 import Discover from './Discover';
 
@@ -74,7 +74,7 @@ export default class App extends Component {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/evenement" component={Evenement} />
             <PrivateRoute path="/event/:id" component={Event} />
-            <PrivateRoute path="/team/:id" component={Team} />
+            <PrivateRoute path="/history" component={History} />
           </div>
         </Router>;
   }
