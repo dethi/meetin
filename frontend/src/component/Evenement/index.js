@@ -4,6 +4,19 @@ import TitleBar from './../TitleBar';
 import Box from './../Box';
 
 class Evenement extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      indexSelected: null
+    };
+  }
+
+  handleOnClick = e => {
+    console.log(e);
+    this.setState({ indexSelected: e });
+  };
+
   render() {
     const eventType = [
       {
@@ -43,7 +56,16 @@ class Evenement extends Component {
         <div className="container">
           <div className="columns column is-7 is-offset-3 is-multiline">
             {eventType.map((e, i) => {
-              return <Box image={e.src} key={i} />;
+              return (
+                <Box
+                  image={e.src}
+                  isSelect={this.state.indexSelected === i}
+                  key={i}
+                  onClick={() => {
+                    this.handleOnClick(i);
+                  }}
+                />
+              );
             })}
           </div>
         </div>
