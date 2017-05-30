@@ -6,12 +6,16 @@ class Box extends Component {
   render() {
     return (
       <div
-        className={classNames('column', 'is-3', 'box-evenement', {
-          'Box--selected': this.props.isSelect
-        })}
+        className="column is-4-tablet is-half-mobile"
         onClick={this.props.onClick}
       >
-        <img className="Box__img" src={this.props.image} alt="" />
+        <p
+          className={classNames('box-evenement', {
+            'Box--selected': this.props.isSelect
+          })}
+        >
+          <img className="Box__img" src={this.props.image} alt="" />
+        </p>
       </div>
     );
   }

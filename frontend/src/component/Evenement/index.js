@@ -52,21 +52,25 @@ class Evenement extends Component {
     return (
       <div>
         <NavBar menuActive="events" />
-        <TitleBar title="Choisissez votre icone" />
+        <TitleBar title="Choisissez une icone" />
         <div className="container">
-          <div className="columns column is-7 is-offset-3 is-multiline">
-            {eventType.map((e, i) => {
-              return (
-                <Box
-                  image={e.src}
-                  isSelect={this.state.indexSelected === i}
-                  key={i}
-                  onClick={() => {
-                    this.handleOnClick(i);
-                  }}
-                />
-              );
-            })}
+          <div className="columns" style={{ margin: '0 auto' }}>
+            <div className="column is-mobile is-8 is-center">
+              <div className="columns is-multiline is-mobile">
+                {eventType.map((e, i) => {
+                  return (
+                    <Box
+                      image={e.src}
+                      isSelect={this.state.indexSelected === i}
+                      key={i}
+                      onClick={() => {
+                        this.handleOnClick(i);
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
