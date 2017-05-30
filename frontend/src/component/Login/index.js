@@ -65,7 +65,7 @@ class Login extends Component {
 
         <div className="hero-body">
           <div className="container has-text-centered">
-            <div className="column center is-one-third">
+            <div className="column is-center is-one-third">
               <div className="box">
                 <div className="content">
                   <h4>Login</h4>
