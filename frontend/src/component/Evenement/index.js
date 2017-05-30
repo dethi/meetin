@@ -16,24 +16,24 @@ class Page extends Component {
 
   steps = [
     {
-      name: 'Logo',
+      name: 'Choisissez Votre Logo',
       component: <Page1 />
     },
     {
-      name: 'Box',
+      name: 'Description de votre évenement',
       component: <Page2 />
     }
   ];
 
   stepForward = () => {
-    if (this.state.step + 1 < 3) this.setState({ step: this.state.step + 1 });
+    if (this.state.step + 1 < 2) this.setState({ step: this.state.step + 1 });
   };
 
   render() {
     return (
       <div>
         <NavBar menuActive="events" />
-        <TitleBar title="Choisissez une icone" />
+        <TitleBar title={this.steps[this.state.step].name} />
         <div className="button--style">
           <a
             className="button is-primary is-pulled-right"
