@@ -63,9 +63,9 @@ class Navbar extends Component {
       <nav className="nav has-shadow">
         <div className="container">
           <div className="nav-left">
-            <a className="nav-item">
+            <Link className="nav-item" to="/">
               <span className="title"><b>Meet'</b>In</span>
-            </a>
+            </Link>
             {menus.map((m, i) => {
               return (
                 <Link

@@ -39,7 +39,7 @@ class Evenement extends Component {
     return (
       <div>
         <NavBar menuActive="events" />
-        <TitleBar title="Choisissez votre évenement" />
+        <TitleBar title="Choisissez votre icone" />
         <div className="container">
           <div className="columns column is-7 is-offset-3 is-multiline">
             {eventType.map((e, i) => {

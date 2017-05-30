@@ -53,7 +53,7 @@ class Login extends Component {
                               className="input email-input"
                               type="text"
                               placeholder="Adresse e-mail"
-                              ref={login => this.login = login}
+                              ref={login => (this.login = login)}
                             />
                             <span className="icon user">
                               <i className="fa fa-user" />
@@ -64,7 +64,7 @@ class Login extends Component {
                               className="input password-input"
                               type="password"
                               placeholder="Password"
-                              ref={password => this.password = password}
+                              ref={password => (this.password = password)}
                             />
                             <span className="icon user">
                               <i className="fa fa-lock" />

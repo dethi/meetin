@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 import './Login.css';
+import { isAuthenticated } from '../../utils';
 
 class Login extends Component {
   constructor(props) {
@@ -42,6 +43,8 @@ class Login extends Component {
 
     if (redirectToReferrer) {
       return <Redirect to={from} />;
+    } else if (isAuthenticated()) {
+      return <Redirect to="/dashboard" />;
     }
 
     const { hasError, errorMsg } = this.state;
