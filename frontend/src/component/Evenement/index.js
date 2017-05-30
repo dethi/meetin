@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import NavBar from './../Navbar'
-import TitleBar from './../TitleBar'
-import Box from './../Box'
+import React, { Component } from 'react';
+import NavBar from './../Navbar';
+import TitleBar from './../TitleBar';
+import Box from './../Box';
 
 class Evenement extends Component {
   render() {
@@ -17,8 +17,8 @@ class Evenement extends Component {
           <Box image="https://image.flaticon.com/icons/svg/167/167741.svg" />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Evenement
+export default Evenement;

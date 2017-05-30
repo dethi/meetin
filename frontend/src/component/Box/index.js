@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './Box.css'
+import React, { Component } from 'react';
+import './Box.css';
 
 class Box extends Component {
   render() {
@@ -7,8 +7,8 @@ class Box extends Component {
       <div className="column is-one-quarter box-evenement">
         <img className="Box--img" src={this.props.image} alt="" />
       </div>
-    )
+    );
   }
 }
 
-export default Box
+export default Box;

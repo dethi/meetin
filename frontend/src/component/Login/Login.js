@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { login } from '../../config/auth'
-import './Login.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { login } from '../../config/auth';
+import './Login.css';
 
 class Login extends Component {
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     login(this.login.value, this.password.value).catch(error => {
       // ADD BOX DANGER HERE
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -96,8 +96,8 @@ class Login extends Component {
         </form>
 
       </section>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;

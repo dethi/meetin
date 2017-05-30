@@ -6,7 +6,6 @@ import Profile from './Profile';
 import Event from './Events/Item';
 import Team from './Team';
 import Evenement from './Evenement';
-
 import { isAuthenticated } from '../utils';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';

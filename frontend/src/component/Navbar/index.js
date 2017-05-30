@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
-import firebase from 'firebase'
-import './Navbar.css'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import firebase from 'firebase';
+import './Navbar.css';
 
 class Navbar extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       teamId: 1,
@@ -13,9 +13,9 @@ class Navbar extends Component {
       redirect: false,
       hasError: false,
       errorMsg: ''
-    }
+    };
 
-    this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this);
   }
 
   toggleMenu = () => {
@@ -23,21 +23,21 @@ class Navbar extends Component {
   };
 
   logout(e) {
-    e.preventDefault()
+    e.preventDefault();
     firebase.auth().signOut().then(() => {
       this.setState({
         redirect: true,
         hasError: false,
         errorMsg: ''
-      })
-    })
+      });
+    });
   }
 
   render() {
-    const { redirect } = this.state
+    const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     const menus = [
@@ -61,7 +61,7 @@ class Navbar extends Component {
         name: 'About',
         to: ''
       }
-    ]
+    ];
 
     return (
       <nav className="nav has-shadow">
@@ -82,7 +82,7 @@ class Navbar extends Component {
                 >
                   {m.name}
                 </Link>
-              )
+              );
             })}
           </div>
           <span className="nav-toggle" onClick={this.toggleMenu}>
@@ -107,7 +107,7 @@ class Navbar extends Component {
                 >
                   {m.name}
                 </Link>
-              )
+              );
             })}
             <Link
               className={
@@ -133,8 +133,8 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }
 
-export default Navbar
+export default Navbar;
