@@ -26,3 +26,8 @@ firebase.auth().onAuthStateChanged(user => {
     store.dispatch(userAction.logout());
   }
 });
+
+export function loginWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+}

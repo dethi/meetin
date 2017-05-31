@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import firebase from 'firebase';
+import { loginWithGoogle } from './../../firebase';
 import './Login.css';
 
 class Login extends Component {
@@ -17,12 +17,8 @@ class Login extends Component {
   }
 
   handleGoogleLogin = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
+    loginWithGoogle()
       .then(res => {
-        console.log(res.user);
         this.setState({
           redirectToReferrer: true,
           hasError: false,

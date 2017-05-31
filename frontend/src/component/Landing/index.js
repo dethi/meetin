@@ -50,7 +50,7 @@ class Landing extends Component {
               <p className="subtitle is-3 has-text-white">
                 de se <b>rencontrer</b>
               </p>
-              <Link to="/" className="button tag is-danger is-large">
+              <Link to="/login" className="button tag is-danger is-large">
                 Découvrir Meet'In
               </Link>
             </div>
