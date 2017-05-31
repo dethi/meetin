@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var User = require('../models/user');
 var History = require('../models/history');
+var Event = require('../models/event');
 
 module.exports = {
   listAll: (req, res) => {
@@ -32,14 +33,14 @@ module.exports = {
   },
 
   getOwnEvents: (req, res) => {
-    // FIXME: Switch this to own id
-    const userId = '592f2e4afc11a6a06aeb7f10';
-    res.json([
-      {
-        name: '',
-        description: ''
-      }
-    ]);
+    Event.find({ user_id: req.uid })
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
   },
 
   getOwnHistory: (req, res) => {

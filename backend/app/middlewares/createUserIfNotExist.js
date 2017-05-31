@@ -20,7 +20,7 @@ var createUserIfNotExist = function(req, res, next) {
               uid: firebaseUser.uid,
               email: firebaseUser.email,
               displayName: firebaseUser.displayName,
-              photoUrl: firebaseUser.photoURL,
+              photoURL: firebaseUser.photoURL,
               description: ''
             });
             userTmp
