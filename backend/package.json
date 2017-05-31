@@ -1,0 +1,16 @@
+{
+  "name": "meetin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-minify": "^0.2.0",
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
+  }
+}
