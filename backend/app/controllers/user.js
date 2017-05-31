@@ -1,7 +1,15 @@
 /* User controller */
 
+var mongoose = require('mongoose');
+var User = require('../models/user');
+
 module.exports = {
   listAll: (req, res) => {
+    User.find({}, function(err, data) {
+      res.json(data);
+      console.log('>>>> ' + data);
+    });
+    /*
     res.json([
       {
         name: 'tom'
@@ -13,6 +21,7 @@ module.exports = {
         name: 'jean'
       }
     ]);
+    */
   },
 
   getInfosById: (req, res) => {
