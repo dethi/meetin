@@ -1,7 +1,10 @@
 import React from 'react';
 
 const Loading = () => (
-  <section className="hero is-primary is-fullheight">
+  <section
+    className="hero is-primary is-fullheight"
+    style={{ backgroundColor: '#ff874e' }}
+  >
     <div className="hero-body">
       <div className="container has-text-centered">
         <span className="icon is-large">
