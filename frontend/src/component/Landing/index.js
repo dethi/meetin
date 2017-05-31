@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Index.css';
+import './Landing.css';
 
-class Index extends Component {
+class Landing extends Component {
   render() {
     return (
       <section className="hero is-img is-fullheight">
@@ -50,7 +50,7 @@ class Index extends Component {
               <p className="subtitle is-3 has-text-white">
                 de se <b>rencontrer</b>
               </p>
-              <Link to="/dashboard" className="button tag is-danger is-large">
+              <Link to="/" className="button tag is-danger is-large">
                 Découvrir Meet'In
               </Link>
             </div>
@@ -61,4 +61,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default Landing;

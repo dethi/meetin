@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import firebase from 'firebase';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
+import Home from './Home';
 import Loading from './Loading';
-import Index from './Index';
 import Login from './Login';
-import Dashboard from './Dashboard';
 import Profile from './Profile';
 import Event from './Events/Item';
 import History from './History';
 import Evenement from './Evenement';
 import Discover from './Discover';
 
-import { isAuthenticated } from '../utils';
 import './App.css';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, isLogged, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated()
+      isLogged
         ? <Component {...props} />
         : <Redirect
             to={{
@@ -30,52 +29,46 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = ({ isLoading, isLogged }) =>
+  isLoading
+    ? <Loading />
+    : <Router>
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute
+            path="/discover"
+            component={Discover}
+            isLogged={isLogged}
+          />
+          <PrivateRoute
+            path="/profile"
+            component={Profile}
+            isLogged={isLogged}
+          />
+          <PrivateRoute
+            path="/evenement"
+            component={Evenement}
+            isLogged={isLogged}
+          />
+          <PrivateRoute
+            path="/event/:id"
+            component={Event}
+            isLogged={isLogged}
+          />
+          <PrivateRoute
+            path="/history"
+            component={History}
+            isLogged={isLogged}
+          />
+        </div>
+      </Router>;
 
-    this.state = {
-      isLogged: false,
-      isLoading: true
-    };
-  }
+const mapStateToProps = state => {
+  return {
+    isLoading: !state.ready,
+    isLogged: state.user !== null
+  };
+};
 
-  componentDidMount() {
-    this.removeListener = firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          isLogged: true,
-          isLoading: false
-        });
-      } else {
-        this.setState({
-          isLogged: false,
-          isLoading: false
-        });
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.removeListener();
-  }
-
-  render() {
-    const { isLoading } = this.state;
-
-    return isLoading
-      ? <Loading />
-      : <Router>
-          <div>
-            <Route exact path="/" component={Index} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <Route path="/discover" component={Discover} />
-            <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/evenement" component={Evenement} />
-            <PrivateRoute path="/event/:id" component={Event} />
-            <PrivateRoute path="/history" component={History} />
-          </div>
-        </Router>;
-  }
-}
+export default connect(mapStateToProps)(App);

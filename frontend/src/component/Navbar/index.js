@@ -15,15 +15,13 @@ class Navbar extends Component {
       hasError: false,
       errorMsg: ''
     };
-
-    this.logout = this.logout.bind(this);
   }
 
   toggleMenu = () => {
     this.setState({ isActive: !this.state.isActive });
   };
 
-  logout(e) {
+  logout = e => {
     e.preventDefault();
     firebase.auth().signOut().then(() => {
       this.setState({
@@ -32,7 +30,7 @@ class Navbar extends Component {
         errorMsg: ''
       });
     });
-  }
+  };
 
   render() {
     const { redirect } = this.state;
@@ -42,11 +40,6 @@ class Navbar extends Component {
     }
 
     const menus = [
-      {
-        id: 'home',
-        name: 'Dashboard',
-        to: '/dashboard'
-      },
       {
         id: 'events',
         name: 'Evenements',

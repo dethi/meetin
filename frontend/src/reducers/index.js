@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
 
-const reducers = combineReducers({});
+import ready from './ready';
+import user from './user';
+
+const reducers = combineReducers({
+  ready,
+  user
+});
 
 export default reducers;

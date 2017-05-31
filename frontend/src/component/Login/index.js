@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
 import firebase from 'firebase';
 import './Login.css';
-import { isAuthenticated } from '../../utils';
 
 class Login extends Component {
   constructor(props) {
@@ -39,12 +40,13 @@ class Login extends Component {
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { isLogged } = this.props;
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
       return <Redirect to={from} />;
-    } else if (isAuthenticated()) {
-      return <Redirect to="/dashboard" />;
+    } else if (isLogged) {
+      return <Redirect to="/" />;
     }
 
     const { hasError, errorMsg } = this.state;
@@ -94,4 +96,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    isLogged: state.user !== null
+  };
+};
+
+export default connect(mapStateToProps)(Login);
