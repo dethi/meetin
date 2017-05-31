@@ -7,7 +7,7 @@ var userSchema = new Schema({
   uid: { type: String, index: true },
   email: String,
   displayName: String,
-  photoUrl: String,
+  photoURL: String,
   description: String
 });
 
