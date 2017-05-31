@@ -16,10 +16,10 @@ app.use(isAuthenticated);
 app.use(createUserIfNotExist);
 
 /* GET event icons list */
-app.get('/event/icons', events.listAllIcon);
+app.get('/event/icon', events.listAllIcon);
 
 /* GET list of users */
-app.get('/users', users.listAll);
+app.get('/user', users.listAll);
 /* GET user informations */
 app.get('/user/:id', users.getInfosById);
 
