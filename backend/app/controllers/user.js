@@ -7,38 +7,22 @@ module.exports = {
   listAll: (req, res) => {
     User.find({}, function(err, data) {
       res.json(data);
-      console.log('>>>> ' + data);
     });
-    /*
-    res.json([
-      {
-        name: 'tom'
-      },
-      {
-        name: 'marc'
-      },
-      {
-        name: 'jean'
-      }
-    ]);
-    */
   },
 
   getInfosById: (req, res) => {
-    res.json({
-      name: '',
-      description: ''
+    User.findOne({ uid: req.params.uid }, function(err, data) {
+      res.json(data);
     });
   },
 
   getOwnInfos: (req, res) => {
-    res.json({
-      name: '',
-      description: ''
-    });
+    return res.json(req.user);
   },
 
   getOwnEvents: (req, res) => {
+    // FIXME: Switch this to own id
+    const userId = '592f2e4afc11a6a06aeb7f10';
     res.json([
       {
         name: '',
