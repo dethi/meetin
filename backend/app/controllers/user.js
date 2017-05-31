@@ -2,18 +2,29 @@
 
 var mongoose = require('mongoose');
 var User = require('../models/user');
+var History = require('../models/history');
 
 module.exports = {
   listAll: (req, res) => {
-    User.find({}, function(err, data) {
-      res.json(data);
-    });
+    User.find({})
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
   },
 
   getInfosById: (req, res) => {
-    User.findOne({ uid: req.params.uid }, function(err, data) {
-      res.json(data);
-    });
+    User.findOne({ uid: req.params.uid })
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
   },
 
   getOwnInfos: (req, res) => {
@@ -32,11 +43,13 @@ module.exports = {
   },
 
   getOwnHistory: (req, res) => {
-    res.json([
-      {
-        name: '',
-        description: ''
-      }
-    ]);
+    History.find({ user_id: req.uid })
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
   }
 };
