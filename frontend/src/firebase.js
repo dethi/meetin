@@ -16,27 +16,22 @@ const config = {
 firebase.initializeApp(config);
 
 let loading = true;
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onIdTokenChanged(user => {
   if (user) {
-    const { uid, displayName, photoURL, email } = user;
-    store.dispatch(userAction.login({ uid, displayName, photoURL, email }));
+    user.getIdToken().then(token => {
+      axios.defaults.headers.common['X-Token'] = token;
+
+      const { uid, displayName, photoURL, email } = user;
+      store.dispatch(userAction.login({ uid, displayName, photoURL, email }));
+    });
   } else {
+    axios.defaults.headers.common['X-Token'] = null;
     store.dispatch(userAction.logout());
   }
 
   if (loading) {
     loading = false;
     store.dispatch(appAction.ready());
-  }
-});
-
-firebase.auth().onIdTokenChanged(user => {
-  if (user) {
-    user.getIdToken().then(token => {
-      axios.defaults.headers.common['X-Token'] = token;
-    });
-  } else {
-    axios.defaults.headers.common['X-Token'] = null;
   }
 });
 
