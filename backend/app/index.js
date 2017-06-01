@@ -21,7 +21,7 @@ app.get('/event/icon', events.listAllIcon);
 /* GET list of users */
 app.get('/user', users.listAll);
 /* GET user informations */
-app.get('/user/:id', users.getInfosById);
+app.get('/user/:uid', users.getInfosById);
 
 /* GET user informations */
 app.get('/me/infos', users.getOwnInfos);

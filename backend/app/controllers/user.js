@@ -7,7 +7,7 @@ var Event = require('../models/event');
 
 module.exports = {
   listAll: (req, res) => {
-    User.find({})
+    User.find({}, null, { sort: { displayName: 1 } })
       .then(data => {
         return res.json(data);
       })
@@ -18,6 +18,7 @@ module.exports = {
   },
 
   getInfosById: (req, res) => {
+    console.log(req.params.uid);
     User.findOne({ uid: req.params.uid })
       .then(data => {
         return res.json(data);
