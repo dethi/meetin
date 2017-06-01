@@ -7,8 +7,6 @@ var createUserIfNotExist = function(req, res, next) {
   User.findOne({ uid: req.uid })
     .then(user => {
       if (user) {
-        console.log('Already exist');
-        console.log(user);
         req.user = user;
         next();
       } else {
@@ -26,8 +24,6 @@ var createUserIfNotExist = function(req, res, next) {
             userTmp
               .save()
               .then(user => {
-                console.log('User created');
-                console.log(user);
                 req.user = user;
                 next();
               })
