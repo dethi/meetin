@@ -17,66 +17,6 @@ class History extends Component {
     });
   }
 
-  /*
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      users: [
-        {
-          id: 1,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
-        },
-        {
-          id: 2,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
-        },
-        {
-          id: 3,
-          name: 'Marie Tchi',
-          role: 'Assistance',
-          pseudo: 'maryy',
-          url: 'http://www.raoul-gilibert.com/wp-content/uploads/2016/01/portrait-femme-studio-corporate-lorraine-metz-016.jpg'
-        },
-        {
-          id: 4,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
-        },
-        {
-          id: 5,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://www.raoul-gilibert.com/wp-content/uploads/2016/01/portrait-femme-studio-corporate-lorraine-metz-016.jpg'
-        },
-        {
-          id: 6,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://www.raoul-gilibert.com/wp-content/uploads/2016/01/portrait-femme-studio-corporate-lorraine-metz-016.jpg'
-        },
-        {
-          id: 7,
-          name: 'John Mc Queen',
-          role: 'Directeur',
-          pseudo: 'johnny',
-          url: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg'
-        }
-      ]
-    };
-  }
-  */
-
   render() {
     const { history } = this.props;
 
