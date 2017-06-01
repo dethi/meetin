@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Home from './Home';
@@ -33,35 +33,41 @@ const App = ({ isLoading, isLogged }) =>
   isLoading
     ? <Loading />
     : <Router>
-        <div>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
+        <Switch>
           <PrivateRoute
+            exact
             path="/discover"
             component={Discover}
             isLogged={isLogged}
           />
           <PrivateRoute
+            exact
             path="/profile"
             component={Profile}
             isLogged={isLogged}
           />
           <PrivateRoute
+            exact
             path="/evenement"
             component={Evenement}
             isLogged={isLogged}
           />
           <PrivateRoute
+            exact
             path="/event/:id"
             component={Event}
             isLogged={isLogged}
           />
           <PrivateRoute
+            exact
             path="/history"
             component={History}
             isLogged={isLogged}
           />
-        </div>
+
+          <Route exact path="/login" component={Login} />
+          <Route path="/" component={Home} />
+        </Switch>
       </Router>;
 
 const mapStateToProps = state => {

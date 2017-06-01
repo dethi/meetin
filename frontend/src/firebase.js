@@ -17,16 +17,16 @@ firebase.initializeApp(config);
 
 let loading = true;
 firebase.auth().onAuthStateChanged(user => {
-  if (loading) {
-    loading = false;
-    store.dispatch(appAction.ready());
-  }
-
   if (user) {
     const { uid, displayName, photoURL, email } = user;
     store.dispatch(userAction.login({ uid, displayName, photoURL, email }));
   } else {
     store.dispatch(userAction.logout());
+  }
+
+  if (loading) {
+    loading = false;
+    store.dispatch(appAction.ready());
   }
 });
 

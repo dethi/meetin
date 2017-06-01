@@ -8,9 +8,7 @@ import userAction from './../../actions/user';
 import { getOwnInfos } from './../../api';
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-
+  componentWillMount() {
     getOwnInfos().then(user => {
       if (user) {
         this.props.dispatch(userAction.updateInfos(user));
