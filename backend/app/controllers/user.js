@@ -45,6 +45,17 @@ module.exports = {
   },
 
   getOwnHistory: (req, res) => {
+    // FIXME: remove this when fixed
+    User.find({}, null, { sort: { displayName: 1 } })
+      .then(data => {
+        return res.json(data);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
+
+    /*
     History.find({ user_id: req.uid })
       .then(data => {
         return res.json(data);
@@ -53,5 +64,6 @@ module.exports = {
         console.error(error);
         return res.sendStatus(500);
       });
+      */
   }
 };
