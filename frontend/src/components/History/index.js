@@ -88,6 +88,7 @@ class History extends Component {
           <div className="columns column is-8-desktop is-offset-2-desktop is-multiline">
             {history &&
               history.map((e, i) => {
+                const [firstName, ...lastName] = e.displayName.split(' ');
                 return (
                   <div
                     className="column is-offset-1-mobile is-10-mobile is-one-third-tablet "
@@ -102,16 +103,18 @@ class History extends Component {
                       <div className="card-content">
                         <div className="media">
                           <div className="media-content">
-                            <p className="title is-4">{e.displayName}</p>
-                            <p className="subtitle is-6">
-                              {'director' /* //FIXME e.role*/}
+                            <p className="title is-4 has-text-centered">
+                              {firstName}<br />
+                              {lastName}
                             </p>
-                            <Link
-                              className="subtitle is-6"
-                              to={'/user/' + e.uid}
-                            >
-                              @{e.pseudo}
-                            </Link>
+                            <p className="has-text-right">
+                              <Link
+                                className="subtitle is-6"
+                                to={'/user/' + e.uid}
+                              >
+                                @{'director' /* //FIXME e.role*/}
+                              </Link>
+                            </p>
                           </div>
                         </div>
                       </div>
