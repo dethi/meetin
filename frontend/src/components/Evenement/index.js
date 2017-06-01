@@ -39,8 +39,8 @@ class Page extends Component {
         <NavBar menuActive="events" />
         <TitleBar title={this.steps[this.state.step].title} />
 
-        <span className="arrow is-pulled-right" />
-        <span className="arrow-left is-pulled-left" />
+        <span className="arrow is-pulled-right" onClick={this.stepForward} />
+        <span className="arrow-left is-pulled-left" onClick={this.stepBack} />
 
         <div>
           {this.steps[this.state.step].component}
