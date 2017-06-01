@@ -5,7 +5,9 @@ const user = (state = null, action) => {
     case 'USER_LOGOUT':
       return null;
     case 'USER_UPDATE_INFOS':
-      return action.user;
+      return { ...state, user: action.user };
+    case 'USER_HISTORY':
+      return { ...state, history: action.history };
     default:
       return state;
   }

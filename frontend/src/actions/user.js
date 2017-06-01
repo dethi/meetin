@@ -18,8 +18,16 @@ const updateInfos = user => {
   };
 };
 
+const getOwnHistory = users => {
+  return {
+    type: 'USER_HISTORY',
+    history: users
+  };
+};
+
 export default {
   login,
   logout,
-  updateInfos
+  updateInfos,
+  getOwnHistory
 };
