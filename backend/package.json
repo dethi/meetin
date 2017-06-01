@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app/index.js"
+    "start": "nodemon app/index.js",
+    "populate": "nodemon app/populateDB.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
