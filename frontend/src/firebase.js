@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import store from './store';
 import appAction from './actions/app';
 import userAction from './actions/user';
+import axios from 'axios';
 
 const config = {
   apiKey: 'AIzaSyCr5XQgRPaTD6WDJtbXREwGNMLF_lyrxKo',
@@ -20,10 +21,22 @@ firebase.auth().onAuthStateChanged(user => {
     loading = false;
     store.dispatch(appAction.ready());
   }
+
   if (user) {
-    store.dispatch(userAction.login(user));
+    const { uid, displayName, photoURL, email } = user;
+    store.dispatch(userAction.login({ uid, displayName, photoURL, email }));
   } else {
     store.dispatch(userAction.logout());
+  }
+});
+
+firebase.auth().onIdTokenChanged(user => {
+  if (user) {
+    user.getIdToken().then(token => {
+      axios.defaults.headers.common['X-Token'] = token;
+    });
+  } else {
+    axios.defaults.headers.common['X-Token'] = null;
   }
 });
 

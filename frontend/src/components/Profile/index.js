@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
+
+import userAction from './../../actions/user';
+import { getOwnInfos } from './../../api';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: 'Roberto',
-      profile_picture: 'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt odio consectetur, dapibus ex. Suspendisse auctor fringilla elit vitae bibendum. Etiam vel risus eget nibh imperdiet dapibus. In hac habitasse platea dictumst. Proin tristique elit in facilisis sagittis. Proin et odio dapibus, ultricies sem nec, sollicitudin lorem. Duis quis justo ut augue consectetur mollis ut quis nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nisi nibh, convallis sed finibus non, facilisis tempor risus. Integer efficitur eros eu orci porttitor, id bibendum quam sagittis. Nunc non enim sagittis, aliquet turpis sit amet, auctor magna.'
-    };
+    getOwnInfos().then(user => {
+      if (user) {
+        this.props.dispatch(userAction.updateInfos(user));
+      }
+    });
   }
+
   render() {
+    const { user } = this.props;
+
     return (
       <div>
         <NavBar menuActive="profile" />
@@ -24,10 +32,7 @@ class Profile extends Component {
                 <div className="box-padded">
                   <article className="tile is-child">
                     <figure className="image is-square">
-                      <img
-                        src={this.state.profile_picture}
-                        alt="profile_picture"
-                      />
+                      <img src={user.photoURL} alt="profile_picture" />
                     </figure>
                   </article>
                 </div>
@@ -44,14 +49,16 @@ class Profile extends Component {
               <div className="tile is-parent">
                 <article className="tile is-child">
                   <div className="bottom-spaced">
-                    <p className="title">Hey, I'm {this.state.name}</p>
+                    <p className="title">Hey, I'm {user.displayName}</p>
                     <hr />
-                    <p>{this.state.description}</p>
+                    <p>
+                      {user.description}
+                    </p>
                   </div>
                   <div className="bottom-spaced">
                     <p className="title">Passions</p>
                     <hr />
-                    <p>{this.state.description}</p>
+                    <p>{user.description}</p>
                   </div>
                 </article>
               </div>
@@ -64,4 +71,8 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(Profile);

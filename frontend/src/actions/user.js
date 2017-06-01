@@ -11,7 +11,15 @@ const logout = () => {
   };
 };
 
+const updateInfos = user => {
+  return {
+    type: 'USER_UPDATE_INFOS',
+    user: user
+  };
+};
+
 export default {
   login,
-  logout
+  logout,
+  updateInfos
 };
