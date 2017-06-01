@@ -10,7 +10,6 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      redirectToReferrer: false,
       hasError: false,
       errorMsg: ''
     };
@@ -20,14 +19,12 @@ class Login extends Component {
     loginWithGoogle()
       .then(res => {
         this.setState({
-          redirectToReferrer: true,
           hasError: false,
           errorMsg: ''
         });
       })
       .catch(err => {
         this.setState({
-          redirectToReferrer: false,
           hasError: true,
           errorMsg: err.message
         });
@@ -37,12 +34,9 @@ class Login extends Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { isLogged } = this.props;
-    const { redirectToReferrer } = this.state;
 
-    if (redirectToReferrer) {
+    if (isLogged) {
       return <Redirect to={from} />;
-    } else if (isLogged) {
-      return <Redirect to="/" />;
     }
 
     const { hasError, errorMsg } = this.state;
