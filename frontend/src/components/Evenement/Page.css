@@ -6,3 +6,7 @@
 .box--evenement{
     padding-top: 30px;
 }
+
+.select--property{
+    width: 100%;
+}

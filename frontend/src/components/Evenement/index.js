@@ -16,11 +16,11 @@ class Page extends Component {
 
   steps = [
     {
-      name: 'Choisissez Votre Logo',
+      title: 'Logo de votre évènement',
       component: <Page1 />
     },
     {
-      name: 'Description de votre évenement',
+      title: 'Description de votre évenement',
       component: <Page2 />
     }
   ];
@@ -33,7 +33,7 @@ class Page extends Component {
     return (
       <div>
         <NavBar menuActive="events" />
-        <TitleBar title={this.steps[this.state.step].name} />
+        <TitleBar title={this.steps[this.state.step].title} />
         <div className="button--style">
           <a
             className="button is-primary is-pulled-right"
