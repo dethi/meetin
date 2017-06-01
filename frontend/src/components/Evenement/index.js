@@ -25,6 +25,10 @@ class Page extends Component {
     }
   ];
 
+  stepBack = () => {
+    if (this.state.step - 1 >= 0) this.setState({ step: this.state.step - 1 });
+  };
+
   stepForward = () => {
     if (this.state.step + 1 < 2) this.setState({ step: this.state.step + 1 });
   };
@@ -34,14 +38,10 @@ class Page extends Component {
       <div>
         <NavBar menuActive="events" />
         <TitleBar title={this.steps[this.state.step].title} />
-        <div className="button--style">
-          <a
-            className="button is-primary is-pulled-right"
-            onClick={this.stepForward}
-          >
-            {' '}Etape suivante
-          </a>
-        </div>
+
+        <span className="arrow is-pulled-right" />
+        <span className="arrow-left is-pulled-left" />
+
         <div>
           {this.steps[this.state.step].component}
         </div>
