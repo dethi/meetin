@@ -14,16 +14,29 @@ class Profile extends Component {
         this.props.dispatch(userAction.updateInfos(user));
       }
     });
+
+    this.state = {
+      disabled: true
+    };
   }
+
+  handleCickEdit = () => {
+    this.setState({ disabled: !this.state.disabled });
+  };
 
   render() {
     const { user } = this.props;
-
     return (
       <div>
         <NavBar menuActive="profile" />
         <TitleBar title="Profile" />
         <div className="section container">
+          <a
+            className="tag is-danger is-medium is-pulled-right"
+            onClick={this.handleCickEdit}
+          >
+            {this.state.disabled ? 'Editer' : 'Valider'}
+          </a>
           <div className="tile is-vertical">
             <div className="tile">
               <div className="tile is-parent is-vertical is-4">
