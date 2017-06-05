@@ -16,12 +16,12 @@ class Page extends Component {
 
   steps = [
     {
-      title: 'Logo de votre évènement',
-      component: <Page1 />
-    },
-    {
       title: 'Description de votre évenement',
       component: <Page2 />
+    },
+    {
+      title: 'Logo de votre évènement',
+      component: <Page1 />
     }
   ];
 
@@ -40,7 +40,11 @@ class Page extends Component {
         <TitleBar title={this.steps[this.state.step].title} />
 
         <span className="arrow is-pulled-right" onClick={this.stepForward} />
-        <span className="arrow-left is-pulled-left" onClick={this.stepBack} />
+        {this.state.step !== 0 &&
+          <span
+            className="arrow-left is-pulled-left"
+            onClick={this.stepBack}
+          />}
 
         <div>
           {this.steps[this.state.step].component}
