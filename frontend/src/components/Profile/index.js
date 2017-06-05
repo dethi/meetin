@@ -16,7 +16,8 @@ class Profile extends Component {
     });
 
     this.state = {
-      disabled: true
+      disabled: true,
+      description: ''
     };
   }
 
@@ -24,8 +25,13 @@ class Profile extends Component {
     this.setState({ disabled: !this.state.disabled });
   };
 
+  handleChangeDescription = event => {
+    this.setState({ description: event.target.value });
+  };
+
   render() {
     const { user } = this.props;
+
     return (
       <div>
         <NavBar menuActive="profile" />
@@ -69,7 +75,17 @@ class Profile extends Component {
                   <div className="bottom-spaced">
                     <p className="title">Passions</p>
                     <hr />
-                    <p>{user.description}</p>
+                    {this.state.disabled
+                      ? <p>{user.description}</p>
+                      : <div className="field">
+                          <p className="control">
+                            <textarea
+                              className="textarea"
+                              value={user.description}
+                              onChange={this.handleChangeDescription}
+                            />
+                          </p>
+                        </div>}
                   </div>
                 </article>
               </div>

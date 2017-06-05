@@ -13,7 +13,10 @@ export function getUserById(id) {
 }
 
 export function getOwnInfos() {
-  return axios.get('/me/infos').then(res => res.data).catch(err => null);
+  return axios
+    .get('/me/infos')
+    .then(res => console.log(res.data))
+    .catch(err => null);
 }
 
 export function getOwnEvents() {
