@@ -25,6 +25,8 @@ app.get('/user/:uid', users.getInfosById);
 
 /* GET user informations */
 app.get('/me/infos', users.getOwnInfos);
+/* POST user informations */
+app.post('/me/infos', users.updateOwnInfos);
 /* GET user events */
 app.get('/me/events', users.getOwnEvents);
 /* GET user match history */

@@ -33,6 +33,26 @@ module.exports = {
     return res.json(req.user);
   },
 
+  updateOwnInfos: (req, res) => {
+    let userTmp = req.user;
+    // Update user infos
+    for (prop in req.body) {
+      if (prop in req.body && prop in userTmp) {
+        userTmp[prop] = req.body[prop];
+      }
+    }
+
+    userTmp
+      .save()
+      .then(user => {
+        return res.json(user);
+      })
+      .catch(error => {
+        console.error(error);
+        return res.sendStatus(500);
+      });
+  },
+
   getOwnEvents: (req, res) => {
     Event.find({ user_id: req.uid })
       .then(data => {
