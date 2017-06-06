@@ -104,9 +104,15 @@ class Dashboard extends Component {
     return (
       <div>
         <NavBar menuActive="home" />
-        <TitleBar title="Mon actualité" />
+        <TitleBar title="Mon calendrier" />
         <div className="columns">
           <div className="column is-8-tablet is-10-mobile is-center">
+            <div className="has-text-centered box-padded">
+              <button className="button is-large is-info is-outlined">
+                Me proposer un meeting
+              </button>
+            </div>
+            <hr />
             {!this.state.events.length
               ? <div>
                   <figure className="has-text-centered">

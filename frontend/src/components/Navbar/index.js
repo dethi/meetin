@@ -41,6 +41,11 @@ class Navbar extends Component {
 
     const menus = [
       {
+        id: 'home',
+        name: 'Dashboard',
+        to: '/'
+      },
+      {
         id: 'events',
         name: 'Evenements',
         to: '/evenement'
