@@ -34,16 +34,12 @@ module.exports = {
   },
 
   updateOwnInfos: (req, res) => {
-    let userTmp = req.user;
-    // Update user infos
-    for (prop in req.body) {
-      if (prop in req.body && prop in userTmp) {
-        userTmp[prop] = req.body[prop];
-      }
-    }
-
-    userTmp
-      .save()
+    // FIXME: Validation of the data ?
+    User.findOneAndUpdate(
+      { uid: req.user.uid },
+      { $set: req.body },
+      { new: false }
+    )
       .then(user => {
         return res.json(user);
       })
