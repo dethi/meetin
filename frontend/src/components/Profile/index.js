@@ -104,15 +104,17 @@ class Profile extends Component {
                           {' '}
                         </p>
                       : <div className="field">
-                          <p className="control">
-                            <textarea
-                              className="textarea"
-                              onChange={this.handleChangeInfos}
-                              value={user.infos}
+                          <p className="control has-icons-left">
+                            <input
+                              className="input is-small"
+                              type="text"
+                              placeholder="Téléphone"
                             />
+                            <span className="icon is-small is-left">
+                              <i className="fa fa-phone" />
+                            </span>
                           </p>
                         </div>}
-
                   </article>
                 </div>
               </div>
