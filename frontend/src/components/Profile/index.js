@@ -44,11 +44,9 @@ class Profile extends Component {
   };
 
   handleSendInformation = () => {
-    var update_json = {
-      description: this.state.description
-    };
-
-    updateProfil(update_json);
+    updateProfil({
+      description: this.state.user.description
+    });
     this.setState({ disabled: true });
   };
 
@@ -63,7 +61,7 @@ class Profile extends Component {
           <a
             className={
               'tag is-medium is-pulled-right ' +
-              (this.state.disabled ? 'is-danger' : 'is-sucess')
+                (this.state.disabled ? 'is-danger' : 'is-sucess')
             }
             onClick={
               this.state.disabled
