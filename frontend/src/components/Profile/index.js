@@ -26,7 +26,6 @@ class Profile extends Component {
   };
 
   handleChangeDescription = event => {
-    console.log(event.target.value);
     this.setState({ description: event.target.value });
   };
 
@@ -36,9 +35,7 @@ class Profile extends Component {
 
   handleSendInformation = () => {
     var update_json = {
-      description: this.state.description === ''
-        ? this.props.description
-        : this.state.description
+      description: this.state.description
     };
 
     updateProfil(update_json);
