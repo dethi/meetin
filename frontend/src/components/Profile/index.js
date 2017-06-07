@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
@@ -8,17 +9,25 @@ import userAction from './../../actions/user';
 import { getOwnInfos, updateProfil } from './../../api';
 
 class Profile extends Component {
-  componentWillMount() {
-    getOwnInfos().then(user => {
-      if (user) {
-        this.props.dispatch(userAction.updateInfos(user));
-      }
-    });
+  constructor(props) {
+    super(props);
 
     this.state = {
+      isLoading: true,
       disabled: true,
       user: this.props.user
     };
+
+    getOwnInfos().then(user => {
+      if (user) {
+        this.props.dispatch(userAction.updateInfos(user));
+        this.setState({ isLoading: false });
+      }
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ user: nextProps.user });
   }
 
   handleCickEdit = () => {
@@ -47,12 +56,13 @@ class Profile extends Component {
     updateProfil({
       description: this.state.user.description
     });
+
+    this.props.dispatch(userAction.updateInfos(this.state.user));
     this.setState({ disabled: true });
   };
 
   render() {
-    const { user } = this.state;
-    console.log(user);
+    const { isLoading, disabled, user } = this.state;
 
     return (
       <div>
@@ -60,10 +70,17 @@ class Profile extends Component {
         <TitleBar title="Profile" />
         <div className="section container">
           <a
-            className={
-              'tag is-medium is-pulled-right ' +
-                (this.state.disabled ? 'is-danger' : 'is-sucess')
-            }
+            className={classNames(
+              'tag',
+              'button',
+              'is-medium',
+              'is-pulled-right',
+              {
+                'is-danger': disabled,
+                'is-success': !disabled,
+                'is-loading': isLoading
+              }
+            )}
             onClick={
               this.state.disabled
                 ? this.handleCickEdit
