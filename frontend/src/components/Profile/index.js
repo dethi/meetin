@@ -11,14 +11,13 @@ class Profile extends Component {
   componentWillMount() {
     getOwnInfos().then(user => {
       if (user) {
-        this.props.dispatch(userAction.updateInfos({ ...user }));
+        this.props.dispatch(userAction.updateInfos(user));
       }
     });
 
     this.state = {
       disabled: true,
-      description: '',
-      infos: ''
+      user: this.props.user
     };
   }
 
@@ -27,6 +26,7 @@ class Profile extends Component {
   };
 
   handleChangeDescription = event => {
+    console.log(event.target.value);
     this.setState({ description: event.target.value });
   };
 
@@ -46,8 +46,8 @@ class Profile extends Component {
   };
 
   render() {
-    console.log(this.props.user);
-    const { user } = this.props;
+    const { user } = this.state;
+    console.log(user);
 
     return (
       <div>
@@ -82,13 +82,13 @@ class Profile extends Component {
                     <p className="title">Infos</p>
                     <hr />
                     {this.state.disabled
-                      ? <p> {this.props.description} </p>
+                      ? <p> {user.infos} </p>
                       : <div className="field">
                           <p className="control">
                             <textarea
                               className="textarea"
-                              value={this.props.description}
                               onChange={this.handleChangeInfos}
+                              value={user.infos}
                             />
                           </p>
                         </div>}
@@ -111,8 +111,8 @@ class Profile extends Component {
                           <p className="control">
                             <textarea
                               className="textarea"
-                              value={this.props.user.description}
                               onChange={this.handleChangeDescription}
+                              value={user.description}
                             />
                           </p>
                         </div>}
