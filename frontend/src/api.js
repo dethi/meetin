@@ -13,10 +13,7 @@ export function getUserById(id) {
 }
 
 export function getOwnInfos() {
-  return axios
-    .get('/me/infos')
-    .then(res => console.log(res.data))
-    .catch(err => null);
+  return axios.get('/me/infos').then(res => res.data).catch(err => null);
 }
 
 export function getOwnEvents() {
@@ -25,4 +22,17 @@ export function getOwnEvents() {
 
 export function getOwnHistory() {
   return axios.get('/me/history').then(res => res.data).catch(err => null);
+}
+
+export function UpdateProfil(json) {
+  return axios
+    .post('/me/infos', {
+      description: json.description
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 }

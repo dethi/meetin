@@ -5,7 +5,7 @@ import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
-import { getOwnInfos } from './../../api';
+import { getOwnInfos, UpdateProfil } from './../../api';
 
 class Profile extends Component {
   componentWillMount() {
@@ -17,7 +17,8 @@ class Profile extends Component {
 
     this.state = {
       disabled: true,
-      description: ''
+      description: '',
+      Infos: ''
     };
   }
 
@@ -29,8 +30,24 @@ class Profile extends Component {
     this.setState({ description: event.target.value });
   };
 
+  handleChangeInfos = event => {
+    this.setState({ Infos: event.target.value });
+  };
+
+  handleSendInformation = () => {
+    var update_json = {
+      description: this.state.description === ''
+        ? this.props.description
+        : this.state.description
+    };
+
+    UpdateProfil(update_json);
+    this.setState({ disabled: true });
+  };
+
   render() {
     const { user } = this.props;
+    console.log(user);
 
     return (
       <div>
@@ -39,7 +56,11 @@ class Profile extends Component {
         <div className="section container">
           <a
             className="tag is-danger is-medium is-pulled-right"
-            onClick={this.handleCickEdit}
+            onClick={
+              this.state.disabled
+                ? this.handleCickEdit
+                : this.handleSendInformation
+            }
           >
             {this.state.disabled ? 'Editer' : 'Valider'}
           </a>
@@ -57,9 +78,18 @@ class Profile extends Component {
                   <article className="tile is-child notification is-danger">
                     <p className="title">Infos</p>
                     <hr />
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt
-                    </p>
+                    {this.state.disabled
+                      ? <p> Test </p>
+                      : <div className="field">
+                          <p className="control">
+                            <textarea
+                              className="textarea"
+                              value=""
+                              onChange={this.handleChangeInfos}
+                            />
+                          </p>
+                        </div>}
+
                   </article>
                 </div>
               </div>
@@ -68,9 +98,6 @@ class Profile extends Component {
                   <div className="bottom-spaced">
                     <p className="title">Hey, I'm {user.displayName}</p>
                     <hr />
-                    <p>
-                      {user.description}
-                    </p>
                   </div>
                   <div className="bottom-spaced">
                     <p className="title">Passions</p>
@@ -81,7 +108,7 @@ class Profile extends Component {
                           <p className="control">
                             <textarea
                               className="textarea"
-                              value={user.description}
+                              value={this.props.description}
                               onChange={this.handleChangeDescription}
                             />
                           </p>
@@ -91,7 +118,6 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     );
