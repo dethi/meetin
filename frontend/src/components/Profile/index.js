@@ -5,20 +5,20 @@ import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
-import { getOwnInfos, UpdateProfil } from './../../api';
+import { getOwnInfos, updateProfil } from './../../api';
 
 class Profile extends Component {
   componentWillMount() {
     getOwnInfos().then(user => {
       if (user) {
-        this.props.dispatch(userAction.updateInfos(user));
+        this.props.dispatch(userAction.updateInfos({ ...user }));
       }
     });
 
     this.state = {
       disabled: true,
       description: '',
-      Infos: ''
+      infos: ''
     };
   }
 
@@ -31,7 +31,7 @@ class Profile extends Component {
   };
 
   handleChangeInfos = event => {
-    this.setState({ Infos: event.target.value });
+    this.setState({ infos: event.target.value });
   };
 
   handleSendInformation = () => {
@@ -41,13 +41,13 @@ class Profile extends Component {
         : this.state.description
     };
 
-    UpdateProfil(update_json);
+    updateProfil(update_json);
     this.setState({ disabled: true });
   };
 
   render() {
+    console.log(this.props.user);
     const { user } = this.props;
-    console.log(user);
 
     return (
       <div>
@@ -55,7 +55,10 @@ class Profile extends Component {
         <TitleBar title="Profile" />
         <div className="section container">
           <a
-            className="tag is-danger is-medium is-pulled-right"
+            className={
+              'tag is-medium is-pulled-right ' +
+                (this.state.disabled ? 'is-danger' : 'is-sucess')
+            }
             onClick={
               this.state.disabled
                 ? this.handleCickEdit
@@ -79,12 +82,12 @@ class Profile extends Component {
                     <p className="title">Infos</p>
                     <hr />
                     {this.state.disabled
-                      ? <p> Test </p>
+                      ? <p> {this.props.description} </p>
                       : <div className="field">
                           <p className="control">
                             <textarea
                               className="textarea"
-                              value=""
+                              value={this.props.description}
                               onChange={this.handleChangeInfos}
                             />
                           </p>
@@ -108,7 +111,7 @@ class Profile extends Component {
                           <p className="control">
                             <textarea
                               className="textarea"
-                              value={this.props.description}
+                              value={this.props.user.description}
                               onChange={this.handleChangeDescription}
                             />
                           </p>
@@ -125,7 +128,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  return { user: state.user };
+  return { ...state.user };
 };
 
 export default connect(mapStateToProps)(Profile);

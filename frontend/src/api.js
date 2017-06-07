@@ -24,7 +24,7 @@ export function getOwnHistory() {
   return axios.get('/me/history').then(res => res.data).catch(err => null);
 }
 
-export function UpdateProfil(json) {
+export function updateProfil(json) {
   return axios
     .post('/me/infos', {
       description: json.description

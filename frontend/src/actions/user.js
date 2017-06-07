@@ -1,7 +1,7 @@
 const login = user => {
   return {
     type: 'USER_LOGGED_IN',
-    user: user
+    user
   };
 };
 
@@ -14,7 +14,7 @@ const logout = () => {
 const updateInfos = user => {
   return {
     type: 'USER_UPDATE_INFOS',
-    user: user
+    user
   };
 };
 

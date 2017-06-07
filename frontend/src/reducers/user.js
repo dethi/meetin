@@ -1,7 +1,7 @@
 const user = (state = null, action) => {
   switch (action.type) {
     case 'USER_LOGGED_IN':
-      return action.user;
+      return { user: action.user };
     case 'USER_LOGOUT':
       return null;
     case 'USER_UPDATE_INFOS':
