@@ -134,6 +134,7 @@ class Profile extends Component {
                               className="input is-small"
                               type="text"
                               placeholder="Téléphone"
+                              value={user.phone}
                               onChange={this.handleChangePhone}
                             />
                             <span className="icon is-small is-left">
