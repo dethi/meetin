@@ -52,9 +52,19 @@ class Profile extends Component {
     });
   };
 
+  handleChangePhone = event => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        phone: event.target.value
+      }
+    });
+  };
+
   handleSendInformation = () => {
     updateProfil({
-      description: this.state.user.description
+      description: this.state.user.description,
+      phone: this.state.user.phone
     });
 
     this.props.dispatch(userAction.updateInfos(this.state.user));
@@ -104,8 +114,7 @@ class Profile extends Component {
                     <p className="title">Infos</p>
                     <hr />
                     {this.state.disabled
-                      ? <p>
-                          {' '}
+                      ? <div>
                           <div>
                             <span className="icon is-small">
                               <i className="fa fa-envelope-o" />
@@ -116,16 +125,16 @@ class Profile extends Component {
                             <span className="icon is-small">
                               <i className="fa fa-phone" />
                             </span>
-                            06.86.90.80.83
+                            {user.phone}
                           </div>
-                          {' '}
-                        </p>
+                        </div>
                       : <div className="field">
                           <p className="control has-icons-left">
                             <input
                               className="input is-small"
                               type="text"
                               placeholder="Téléphone"
+                              onChange={this.handleChangePhone}
                             />
                             <span className="icon is-small is-left">
                               <i className="fa fa-phone" />
@@ -145,7 +154,15 @@ class Profile extends Component {
                     <p className="title">Passions</p>
                     <hr />
                     {this.state.disabled
-                      ? <p>{user.description}</p>
+                      ? <div
+                          dangerouslySetInnerHTML={{
+                            __html: user.description &&
+                              user.description.replace(
+                                /(?:\r\n|\r|\n)/g,
+                                '<br />'
+                              )
+                          }}
+                        />
                       : <div className="field">
                           <p className="control">
                             <textarea
