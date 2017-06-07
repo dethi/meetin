@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { loginWithGoogle } from './../../firebase';
+import { loginWithGoogle, loginWithFacebook } from './../../firebase';
 import './Login.css';
 
 class Login extends Component {
@@ -17,6 +17,22 @@ class Login extends Component {
 
   handleGoogleLogin = () => {
     loginWithGoogle()
+      .then(res => {
+        this.setState({
+          hasError: false,
+          errorMsg: ''
+        });
+      })
+      .catch(err => {
+        this.setState({
+          hasError: true,
+          errorMsg: err.message
+        });
+      });
+  };
+
+  handleFacebookLogin = () => {
+    loginWithFacebook()
       .then(res => {
         this.setState({
           hasError: false,
@@ -67,15 +83,25 @@ class Login extends Component {
                       {errorMsg}
                     </div>}
 
-                  <button
-                    className="button is-info is-fullwidth"
+                  <a
+                    className="button is-info is-fullwidth Login__button"
                     onClick={this.handleGoogleLogin}
                   >
                     <span className="icon">
                       <i className="fa fa-google" />
                     </span>
                     <span>Login with <b>Google</b></span>
-                  </button>
+                  </a>
+
+                  <a
+                    className="button is-info is-fullwidth Login__button"
+                    onClick={this.handleFacebookLogin}
+                  >
+                    <span className="icon">
+                      <i className="fa fa-facebook" />
+                    </span>
+                    <span>Login with <b>Facebook</b></span>
+                  </a>
                 </div>
               </div>
             </div>

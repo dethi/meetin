@@ -1,3 +1,7 @@
 .Login__gradient {
-  background-image:linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+  background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+}
+
+.Login__button {
+  margin-bottom: 5px;
 }
