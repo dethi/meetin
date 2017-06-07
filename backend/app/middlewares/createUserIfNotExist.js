@@ -19,7 +19,8 @@ var createUserIfNotExist = function(req, res, next) {
               email: firebaseUser.email,
               displayName: firebaseUser.displayName,
               photoURL: firebaseUser.photoURL,
-              description: ''
+              description: '',
+              phone: ''
             });
             userTmp
               .save()
