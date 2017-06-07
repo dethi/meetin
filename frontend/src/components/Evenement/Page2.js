@@ -5,7 +5,7 @@ class Page2 extends Component {
   render() {
     return (
       <div className="box--evenement">
-        <div className="column is-mobile is-8 is-center">
+        <div className="column is-center">
 
           <div className="field is-horizontal">
             <div className="field-label is-normal">
@@ -50,34 +50,6 @@ class Page2 extends Component {
                     </span>
                     <span className="icon is-small is-left">
                       <i className="fa fa-user" />
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Activitée</label>
-            </div>
-            <div className="field-body">
-              <div className="field">
-                <div className="control">
-                  <p className="control has-icons-left">
-                    <span className="select select--property">
-                      <select className="select--property">
-                        <option selected>Football</option>
-                        <option>Cinéma</option>
-                        <option>Basketball</option>
-                        <option>NHL</option>
-                        <option>Restaurant</option>
-                        <option>Opéra</option>
-                        <option>Shopping</option>
-                      </select>
-                    </span>
-                    <span className="icon is-small is-left">
-                      <i className="fa fa-globe" />
                     </span>
                   </p>
                 </div>

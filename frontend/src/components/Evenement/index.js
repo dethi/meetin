@@ -8,46 +8,24 @@ import './Page.css';
 class Page extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      step: 0
-    };
   }
-
-  steps = [
-    {
-      title: 'Description de votre évenement',
-      component: <Page2 />
-    },
-    {
-      title: 'Logo de votre évènement',
-      component: <Page1 />
-    }
-  ];
-
-  stepBack = () => {
-    if (this.state.step - 1 >= 0) this.setState({ step: this.state.step - 1 });
-  };
-
-  stepForward = () => {
-    if (this.state.step + 1 < 2) this.setState({ step: this.state.step + 1 });
-  };
 
   render() {
     return (
       <div>
         <NavBar menuActive="events" />
-        <TitleBar title={this.steps[this.state.step].title} />
-
-        <span className="arrow is-pulled-right" onClick={this.stepForward} />
-        {this.state.step !== 0 &&
-          <span
-            className="arrow-left is-pulled-left"
-            onClick={this.stepBack}
-          />}
-
-        <div>
-          {this.steps[this.state.step].component}
+        <TitleBar />
+        <div class="container">
+          <div className="columns">
+            <div className="column is-half is-offset-one-quarter">
+              <Page2 />
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-half is-offset-one-quarter">
+              <Page1 />
+            </div>
+          </div>
         </div>
       </div>
     );

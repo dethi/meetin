@@ -5,10 +5,7 @@ import './Box.css';
 class Box extends Component {
   render() {
     return (
-      <div
-        className="column is-4-tablet is-half-mobile"
-        onClick={this.props.onClick}
-      >
+      <div className="column is-4" onClick={this.props.onClick}>
         <p
           className={classNames('box-evenement', {
             'Box--selected': this.props.isSelect
