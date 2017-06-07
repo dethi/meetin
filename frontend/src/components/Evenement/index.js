@@ -5,21 +5,58 @@ import Category from './Category';
 import './Page.css';
 
 export default class Evenement extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: null,
+      participants: [],
+      nb_participant: 2,
+      description: '',
+      category: '',
+      date: new Date(),
+      time_period: ''
+    };
+  }
+
   handleSelected = category => {
-    console.log(category);
+    this.setState({ category });
+  };
+
+  handleChangeTitle = event => {
+    this.setState({ title: event.target.value });
+  };
+
+  handleChangeDesc = event => {
+    this.setState({ description: event.target.value });
+  };
+
+  handleChangeSelected = event => {
+    this.setState({ nb_participant: parseInt(event.target.value) });
+  };
+
+  sendInformation = () => {
+    console.log(this.state);
+
+    // TO FIX WITH POST EVENT CALL
   };
 
   render() {
+    console.log(this.state);
+
     return (
       <div>
         <NavBar menuActive="events" />
         <TitleBar title="Hello" />
         <div className="container">
+          <a className="button is-pulled-right" onClick={this.sendInformation}>
+            Valider
+          </a>
+
           <div className="columns">
             <div className="column is-half is-offset-one-quarter">
               <div className="box--evenement">
                 <div className="column is-center">
-
                   <div className="field is-horizontal">
                     <div className="field-label is-normal">
                       <label className="label">Titre</label>
@@ -31,6 +68,7 @@ export default class Evenement extends Component {
                             className="input"
                             type="text"
                             placeholder="Titre de l'évènement"
+                            onChange={this.handleChangeTitle}
                           />
                         </div>
                       </div>
@@ -46,19 +84,21 @@ export default class Evenement extends Component {
                         <div className="control">
                           <p className="control has-icons-left">
                             <span className="select select--property">
-                              <select className="select--property">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
+                              <select
+                                className="select--property"
+                                onChange={this.handleChangeSelected}
+                              >
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
                               </select>
                             </span>
                             <span className="icon is-small is-left">
@@ -81,6 +121,7 @@ export default class Evenement extends Component {
                           <textarea
                             className="textarea"
                             placeholder="Description de l'évènement"
+                            onChange={this.handleChangeDesc}
                           />
                         </div>
                       </div>
