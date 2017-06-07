@@ -52,6 +52,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.state;
+    console.log(user);
 
     return (
       <div>
@@ -86,7 +87,22 @@ class Profile extends Component {
                     <p className="title">Infos</p>
                     <hr />
                     {this.state.disabled
-                      ? <p> {user.infos} </p>
+                      ? <p>
+                          {' '}
+                          <div>
+                            <span className="icon is-small">
+                              <i className="fa fa-envelope-o" />
+                            </span>
+                            {user.email}
+                          </div>
+                          <div>
+                            <span className="icon is-small">
+                              <i className="fa fa-phone" />
+                            </span>
+                            06.86.90.80.83
+                          </div>
+                          {' '}
+                        </p>
                       : <div className="field">
                           <p className="control">
                             <textarea
