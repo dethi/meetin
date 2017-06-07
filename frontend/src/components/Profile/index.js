@@ -26,11 +26,21 @@ class Profile extends Component {
   };
 
   handleChangeDescription = event => {
-    this.setState({ description: event.target.value });
+    this.setState({
+      user: {
+        ...this.state.user,
+        description: event.target.value
+      }
+    });
   };
 
   handleChangeInfos = event => {
-    this.setState({ infos: event.target.value });
+    this.setState({
+      user: {
+        ...this.state.user,
+        infos: event.target.value
+      }
+    });
   };
 
   handleSendInformation = () => {
@@ -44,7 +54,6 @@ class Profile extends Component {
 
   render() {
     const { user } = this.state;
-    console.log(user);
 
     return (
       <div>
@@ -54,7 +63,7 @@ class Profile extends Component {
           <a
             className={
               'tag is-medium is-pulled-right ' +
-                (this.state.disabled ? 'is-danger' : 'is-sucess')
+              (this.state.disabled ? 'is-danger' : 'is-sucess')
             }
             onClick={
               this.state.disabled
