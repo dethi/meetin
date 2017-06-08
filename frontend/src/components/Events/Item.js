@@ -2,23 +2,37 @@ import React, { Component } from 'react';
 
 import TitleBar from './../TitleBar';
 
+import { getEventById } from './../../api';
+
 class Item extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: this.props.match.params.id,
-      title: 'Partie de foot',
-      profile_picture:
-        'http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2015/12/mark-zuckerberg.jpg',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt odio consectetur, dapibus ex. Suspendisse auctor fringilla elit vitae bibendum. Etiam vel risus eget nibh imperdiet dapibus. In hac habitasse platea dictumst. Proin tristique elit in facilisis sagittis. Proin et odio dapibus, ultricies sem nec, sollicitudin lorem. Duis quis justo ut augue consectetur mollis ut quis nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nisi nibh, convallis sed finibus non, facilisis tempor risus. Integer efficitur eros eu orci porttitor, id bibendum quam sagittis. Nunc non enim sagittis, aliquet turpis sit amet, auctor magna.'
+      owner: {},
+      participants: [],
+      max_participants: 10,
+      title: '',
+      description: '',
+      category: '',
+      address: '',
+      date: Date(),
+      time: ''
     };
   }
+
+  componentWillMount() {
+    getEventById(this.props.match.params.id).then(event => {
+      console.log(this.props.match.params.id);
+      console.log(event);
+      this.setState({ ...event });
+    });
+  }
+
   render() {
     return (
       <div>
-        <TitleBar title={this.state.title + ': ' + this.state.id} />
+        <TitleBar title={this.state.title} />
         <div className="section container">
           <div className="tile is-vertical">
             <div className="tile">
@@ -41,7 +55,7 @@ class Item extends Component {
                           <i className="fa fa-clock-o" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          10h30
+                          {this.state.time}
                         </span>
                       </div>
                       <div className="column is-half">
@@ -49,7 +63,7 @@ class Item extends Component {
                           <i className="fa fa-users" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          <b>10</b>/20
+                          <b>{this.state.participants.length}</b>/{this.state.max_participants}
                         </span>
                       </div>
                     </div>
@@ -70,7 +84,7 @@ class Item extends Component {
                 <article className="tile is-child">
                   <figure className="image is-square">
                     <img
-                      src={this.state.profile_picture}
+                      src={this.state.owner.photoURL}
                       alt="profile_picture"
                     />
                   </figure>

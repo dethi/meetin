@@ -32,7 +32,7 @@ module.exports = {
 
   getEventById: (req, res) => {
     Event.findById(req.params.id)
-      .populate('user_id')
+      .populate('owner')
       .populate('participants')
       .then(data => {
         return res.json(data);

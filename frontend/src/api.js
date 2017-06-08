@@ -29,7 +29,7 @@ export function listEvents() {
 }
 
 export function getEventById(id) {
-  return axios.get(`/event${id}`).then(res => res.data).catch(err => null);
+  return axios.get(`/event/${id}`).then(res => res.data).catch(err => null);
 }
 
 export function updateProfil(infos) {

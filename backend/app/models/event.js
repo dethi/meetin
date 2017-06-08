@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var User = require('./user');
 
 var eventSchema = new Schema({
-  user_id: { type: String, ref: 'user' },
+  owner: { type: String, ref: 'user' },
   participants: [{ type: String, ref: 'user' }],
   max_participants: Number,
   title: String,

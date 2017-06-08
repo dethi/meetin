@@ -133,13 +133,23 @@ class Dashboard extends Component {
           </div>
           <hr />
           <div className="columns is-multiline">
-            {this.state.events.map((e, i) => {
-              return (
-                <div className="column is-one-third" key={i}>
-                  <EventItem {...e} />
+
+            {!this.state.events.length
+              ? <div>
+                  <figure className="has-text-centered">
+                    <img src={emptyEvents} alt="profile_picture" />
+                  </figure>
+                  <p className="subtitle is-4 has-text-centered">
+                    Oops, vous n'avez aucun evenement..
+                  </p>
                 </div>
-              );
-            })}
+              : this.state.events.map((e, i) => {
+                  return (
+                    <div className="column is-one-third" key={i}>
+                      <EventItem {...e} />
+                    </div>
+                  );
+                })}
 
           </div>
         </div>
