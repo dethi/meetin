@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import TitleBar from './../TitleBar';
 import Category from './Category';
 import './Page.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
+import { AddEvent } from './../../api';
 
-export default class Evenement extends Component {
+class Evenement extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       title: null,
       participants: [],
-      nb_participant: 2,
+      max_participants: 2,
       description: '',
       category: '',
       date: new Date(),
-      time_period: moment()
+      time: moment(),
+      address: ''
     };
   }
 
   handleChange = date => {
-    this.setState({ time_period: date });
+    this.setState({ time: date });
   };
 
   handleSelected = category => {
@@ -39,13 +41,11 @@ export default class Evenement extends Component {
   };
 
   handleChangeSelected = event => {
-    this.setState({ nb_participant: parseInt(event.target.value, 10) });
+    this.setState({ max_participants: parseInt(event.target.value, 10) });
   };
 
   sendInformation = () => {
-    console.log(this.state);
-
-    // TO FIX WITH POST EVENT CALL
+    AddEvent(this.props.user.uid, this.state);
   };
 
   render() {
@@ -122,7 +122,7 @@ export default class Evenement extends Component {
                       <div className="field">
                         <div className="control">
                           <DatePicker
-                            selected={this.state.time_period}
+                            selected={this.state.time}
                             onChange={this.handleChange}
                             className="input"
                             style={{ width: '100%' }}
@@ -172,3 +172,9 @@ export default class Evenement extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { ...state.user };
+};
+
+export default connect(mapStateToProps)(Evenement);

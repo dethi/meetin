@@ -42,3 +42,15 @@ export function updateProfil(infos) {
       console.log(error);
     });
 }
+
+export function AddEvent(uid, json) {
+  return axios
+    .post('/event/new', { ...json, owner: uid })
+    .then(function(response) {
+      console.log('jsui ici');
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+}
