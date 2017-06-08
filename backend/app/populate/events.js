@@ -23,7 +23,7 @@ module.exports = {
     return getUsers().then(users => {
       var list = [
         new Event({
-          user_uid: users['Albert Einstein'].uid,
+          user_id: users['Albert Einstein']._id,
           participants: [],
           max_participants: 10,
           title: 'Petit basket',
@@ -35,7 +35,7 @@ module.exports = {
           time: '10h30'
         }),
         new Event({
-          user_uid: users['Bill Gates'].uid,
+          user_id: users['Bill Gates']._id,
           participants: ['Albert Einstein'],
           max_participants: 20,
           title: "Restaurant de fin d'année",

@@ -16,12 +16,20 @@ export function getOwnInfos() {
   return axios.get('/me/infos').then(res => res.data).catch(err => null);
 }
 
+export function getOwnHistory() {
+  return axios.get('/me/history').then(res => res.data).catch(err => null);
+}
+
 export function getOwnEvents() {
   return axios.get('/me/events').then(res => res.data).catch(err => null);
 }
 
-export function getOwnHistory() {
-  return axios.get('/me/history').then(res => res.data).catch(err => null);
+export function listEvents() {
+  return axios.get('/event').then(res => res.data).catch(err => null);
+}
+
+export function getEventById(id) {
+  return axios.get(`/event${id}`).then(res => res.data).catch(err => null);
 }
 
 export function updateProfil(infos) {

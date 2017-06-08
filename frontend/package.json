@@ -6,6 +6,8 @@
     "axios": "^0.16.1",
     "bulma": "^0.4.1",
     "classnames": "^2.2.5",
+    "dateformat": "^2.0.0",
+    "ellipsize": "^0.0.3",
     "firebase": "^4.0.0",
     "font-awesome": "^4.7.0",
     "react": "^15.5.4",

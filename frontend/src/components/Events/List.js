@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import dateformat from 'dateformat';
+import ellipsize from 'ellipsize';
+
 import TitleBar from './../TitleBar';
 import { Link } from 'react-router-dom';
+import { listEvents } from './../../api';
 
 import emptyEvents from './../../img/events-empty-data-set.png';
 
@@ -15,7 +19,7 @@ class EventItem extends Component {
       <div className="box" style={this.props.outdated ? outdated : null}>
         <article className="media">
           <div className="media-left is-vcentered">
-            <Link to={`/event/${this.props.id}`}>
+            <Link to={`/event/${this.props._id}`}>
               <figure
                 className="image is-128x128"
                 style={{ padding: '20px', cursor: 'pointer' }}
@@ -35,13 +39,15 @@ class EventItem extends Component {
                   <i className="fa fa-calendar" aria-hidden="true" />
                 </span>
                 <span>
-                  <small>{this.props.date}</small>
+                  <small>
+                    {dateformat(this.props.date, 'dd/mm/yyyy')}
+                  </small>
                 </span>
                 <span className="hspaced">-</span>
                 <small>{this.props.time}</small>
               </p>
 
-              <p>{this.props.description}</p>
+              <p>{ellipsize(this.props.description, 60)}</p>
             </div>
           </div>
         </article>
@@ -55,7 +61,8 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      events: [
+      events: []
+      /*
         {
           id: 1,
           name: 'Pizza',
@@ -101,8 +108,14 @@ class Dashboard extends Component {
           icon: 'https://image.flaticon.com/icons/svg/167/167752.svg',
           outdated: true
         }
-      ]
+      ]*/
     };
+  }
+
+  componentWillMount() {
+    listEvents().then(events => {
+      this.setState({ events });
+    });
   }
 
   render() {
@@ -122,8 +135,8 @@ class Dashboard extends Component {
           <div className="columns is-multiline">
             {this.state.events.map((e, i) => {
               return (
-                <div className="column is-one-third">
-                  <EventItem key={i} {...e} />
+                <div className="column is-one-third" key={i}>
+                  <EventItem {...e} />
                 </div>
               );
             })}
