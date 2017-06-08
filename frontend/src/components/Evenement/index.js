@@ -49,13 +49,10 @@ export default class Evenement extends Component {
         <NavBar menuActive="events" />
         <TitleBar title="Hello" />
         <div className="container">
-          <a className="button is-pulled-right" onClick={this.sendInformation}>
-            Valider
-          </a>
 
           <div className="columns">
             <div className="column is-half is-offset-one-quarter">
-              <div className="box--evenement">
+              <div className="box box--evenement">
                 <div className="column is-center">
                   <div className="field is-horizontal">
                     <div className="field-label is-normal">
@@ -110,8 +107,8 @@ export default class Evenement extends Component {
                     </div>
                   </div>
 
-                  <div className="field is-horizontal">
-                    <div className="field-label is-normal">
+                  <div className="field is-vertical">
+                    <div className="is-normal">
                       <label className="label">Description</label>
                     </div>
 
@@ -136,7 +133,16 @@ export default class Evenement extends Component {
               <Category onSelected={this.handleSelected} />
             </div>
           </div>
+          <div className="hero-body">
+            <a
+              className="button is-pulled-right"
+              onClick={this.sendInformation}
+            >
+              Valider
+            </a>
+          </div>
         </div>
+
       </div>
     );
   }
