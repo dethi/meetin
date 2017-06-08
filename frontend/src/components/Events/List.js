@@ -95,15 +95,15 @@ class Dashboard extends Component {
                   Oops, il n'y a aucun evenement..
                 </p>
               </div>
-            : this.state.events.map((e, i) => {
-                return (
-                  <div className="columns is-multiline">
+            : <div className="columns is-multiline">
+                {this.state.events.map((e, i) => {
+                  return (
                     <div className="column is-one-third" key={i}>
                       <EventItem {...e} />
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>}
 
         </div>
       </div>
