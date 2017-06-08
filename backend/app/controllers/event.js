@@ -44,6 +44,16 @@ module.exports = {
   },
 
   createEvent: (req, res) => {
-    // FIXME: save new event
+    new Event({
+      owner: req.uid,
+      participants: req.participants,
+      max_participants: req.max_participants,
+      title: req.title,
+      description: req.description,
+      category: req.category,
+      address: req.address,
+      date: req.date,
+      time: req.time
+    }).save();
   }
 };

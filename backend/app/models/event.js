@@ -13,7 +13,7 @@ var eventSchema = new Schema({
   category: String,
   address: String,
   date: Date,
-  time: String
+  time: Date
 });
 
 module.exports = mongoose.model('event', eventSchema);
