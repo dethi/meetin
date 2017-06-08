@@ -47,8 +47,7 @@ export function AddEvent(uid, json) {
   return axios
     .post('/event/new', { ...json, owner: uid })
     .then(function(response) {
-      console.log('jsui ici');
-      console.log(response);
+      return response.status === 200;
     })
     .catch(function(error) {
       console.log(error);

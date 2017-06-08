@@ -44,8 +44,6 @@ module.exports = {
   },
 
   createEvent: (req, res) => {
-    console.log(req.body);
-
     if (
       req.body == null ||
       req.body.description == null ||

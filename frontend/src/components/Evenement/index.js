@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import { AddEvent } from './../../api';
+import { Redirect } from 'react-router-dom';
 
 class Evenement extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class Evenement extends Component {
       category: '',
       date: new Date(),
       time: moment(),
-      address: ''
+      address: '',
+      redirect: false
     };
   }
 
@@ -45,11 +47,14 @@ class Evenement extends Component {
   };
 
   sendInformation = () => {
-    AddEvent(this.props.user.uid, this.state);
+    const result = AddEvent(this.props.user.uid, this.state);
+    if (result) {
+      this.setState({ redirect: result });
+    }
   };
 
   render() {
-    console.log(this.state);
+    if (this.state.redirect) return <Redirect to="/event" />;
 
     return (
       <div>
