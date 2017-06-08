@@ -18,13 +18,12 @@ export default class Evenement extends Component {
       description: '',
       category: '',
       date: new Date(),
-      time_period: '',
-      startDate: moment()
+      time_period: moment()
     };
   }
 
   handleChange = date => {
-    this.setState({ startDate: date });
+    this.setState({ time_period: date });
   };
 
   handleSelected = category => {
@@ -124,7 +123,7 @@ export default class Evenement extends Component {
                       <div className="field">
                         <div className="control">
                           <DatePicker
-                            selected={this.state.startDate}
+                            selected={this.state.time_period}
                             onChange={this.handleChange}
                             className="input"
                           />
