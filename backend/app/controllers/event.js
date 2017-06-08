@@ -45,15 +45,15 @@ module.exports = {
 
   createEvent: (req, res) => {
     new Event({
-      owner: req.uid,
-      participants: req.participants,
-      max_participants: req.max_participants,
-      title: req.title,
-      description: req.description,
-      category: req.category,
-      address: req.address,
-      date: req.date,
-      time: req.time
+      owner: req.body.uid,
+      participants: req.body.participants,
+      max_participants: req.body.max_participants,
+      title: req.body.title,
+      description: req.body.description,
+      category: req.body.category,
+      address: req.body.address,
+      date: req.body.date,
+      time: req.body.time
     }).save();
   }
 };
