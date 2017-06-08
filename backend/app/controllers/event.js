@@ -44,8 +44,20 @@ module.exports = {
   },
 
   createEvent: (req, res) => {
+    console.log(req.body);
+
+    if (
+      req.body == null ||
+      req.body.description == null ||
+      req.body.max_participants == null ||
+      req.body.category == null ||
+      req.body.owner == null
+    ) {
+      return res.sendStatus(500);
+    }
+
     new Event({
-      owner: req.body.uid,
+      owner: req.body.owner,
       participants: req.body.participants,
       max_participants: req.body.max_participants,
       title: req.body.title,
@@ -55,5 +67,7 @@ module.exports = {
       date: req.body.date,
       time: req.body.time
     }).save();
+
+    return res.sendStatus(200);
   }
 };
