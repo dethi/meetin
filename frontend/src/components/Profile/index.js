@@ -80,6 +80,14 @@ class Profile extends Component {
         <NavBar menuActive="profile" />
         <TitleBar title="Profile" />
         <div className="section container">
+          {!this.state.disabled &&
+            <a className="tag button is-medium is-pulled-right is-danger is-modifier">
+              <button
+                className="delete"
+                style={{ margin: '0 auto' }}
+                onClick={this.handleCickEdit}
+              />
+            </a>}
           <a
             className={classNames(
               'tag',
@@ -100,6 +108,7 @@ class Profile extends Component {
           >
             {this.state.disabled ? 'Editer' : 'Valider'}
           </a>
+
           <div className="tile is-vertical">
             <div className="tile">
               <div className="tile is-parent is-vertical is-4">

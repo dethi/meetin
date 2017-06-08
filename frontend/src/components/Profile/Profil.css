@@ -1,3 +1,15 @@
 .margin-text {
   margin-right: 10px;
 }
+
+.is-modifier {
+  margin-left: 5px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.tag .delete {
+  margin: 0 auto;
+}
