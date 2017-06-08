@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import dateformat from 'dateformat';
-import classNames from 'classnames';
 
 import TitleBar from './../TitleBar';
 
