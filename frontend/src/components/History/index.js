@@ -35,7 +35,11 @@ class History extends Component {
                     <div className="card boxed">
                       <Link className="card-image" to={'/user/' + e.uid}>
                         <figure className="image is-square">
-                          <img src={e.photoURL} alt="profile_picture" />
+                          <img
+                            src={e.photoURL}
+                            alt="profile_picture"
+                            style={{ width: '100%', height: '100%' }}
+                          />
                         </figure>
                       </Link>
                       <div className="card-content">

@@ -42,6 +42,12 @@ class Navbar extends Component {
     };
   }
 
+  isSelected = (pathname, to) => {
+    return (
+      (to !== '/' && pathname.includes(to)) || (to === '/' && pathname === '/')
+    );
+  };
+
   toggleMenu = () => {
     this.setState({ isActive: !this.state.isActive });
   };
@@ -77,7 +83,7 @@ class Navbar extends Component {
                   'is-tab',
                   'is-hidden-mobile',
                   'is-primary',
-                  { 'is-active': pathname === m.to }
+                  { 'is-active': this.isSelected(pathname, m.to) }
                 )}
                 key={'menu-' + i}
                 to={m.to}
@@ -105,7 +111,7 @@ class Navbar extends Component {
                   'is-tab',
                   'is-hidden-tablet',
                   'is-primary',
-                  { 'is-active': pathname === m.to }
+                  { 'is-active': this.isSelected(pathname, m.to) }
                 )}
                 key={'mobile-menu-' + i}
                 to={m.to}
@@ -117,7 +123,7 @@ class Navbar extends Component {
             {menus.right.map((m, i) =>
               <Link
                 className={classNames('nav-item', 'is-tab', 'is-primary ', {
-                  'is-active': pathname === m.to
+                  'is-active': this.isSelected(pathname, m.to)
                 })}
                 key={'menu-' + i}
                 to={m.to}

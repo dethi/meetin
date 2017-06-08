@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import dateformat from 'dateformat';
+import classNames from 'classnames';
 
 import TitleBar from './../TitleBar';
 
@@ -23,13 +25,17 @@ class Item extends Component {
 
   componentWillMount() {
     getEventById(this.props.match.params.id).then(event => {
-      console.log(this.props.match.params.id);
-      console.log(event);
       this.setState({ ...event });
     });
   }
 
+  handleSignToEvent() {
+    console.log('click');
+  }
+
   render() {
+    const fullEvent =
+      this.state.participants.length === this.state.max_participants;
     return (
       <div>
         <TitleBar title={this.state.title} />
@@ -47,7 +53,7 @@ class Item extends Component {
                           <i className="fa fa-calendar" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          Lundi 21 janvier 2017
+                          {dateformat(this.state.date, 'dd/mm/yyyy')}
                         </span>
                       </div>
                       <div className="column is-half">
@@ -89,19 +95,47 @@ class Item extends Component {
                     />
                   </figure>
                 </article>
-                <article className="tile is-child notification is-light">
-                  <p className="title">Infos</p>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec aliquam risus porta, tincidunt
-                  </p>
-                </article>
                 <article className="tile is-child">
-                  <button className="button is-success is-fullwidth box-padded subtitle is-4">
-                    S'inscrire
-                  </button>
+                  {fullEvent
+                    ? <button className="button is-fullwidth box-padded subtitle is-4 is-dark is-disabled">
+                        COMPLET
+                      </button>
+                    : <button
+                        className="button is-fullwidth box-padded subtitle is-4 is-success"
+                        onClick={this.handleSignToEvent.bind(this)}
+                      >
+                        S'inscrire
+                      </button>}
                 </article>
+                <article className="tile is-child notification is-light">
+                  <p className="title">Participants</p>
+                  <hr />
+                  <div>
+                    {this.state.participants.length
+                      ? this.state.participants.map((p, i) => {
+                          return (
+                            <figure
+                              className="image is-64x64"
+                              key={i}
+                              style={{
+                                'border-radius': '50%',
+                                overflow: 'hidden'
+                              }}
+                            >
+                              <img
+                                src={p.photoURL}
+                                alt={p.displayName}
+                                style={{ width: '100%', height: '100%' }}
+                              />
+                            </figure>
+                          );
+                        })
+                      : <div className="has-text-centered">
+                          Aucun participant
+                        </div>}
+                  </div>
+                </article>
+
               </div>
             </div>
           </div>
