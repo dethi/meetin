@@ -114,7 +114,7 @@ class Dashboard extends Component {
 
   componentWillMount() {
     listEvents().then(events => {
-      this.setState({ events });
+      if (events) this.setState({ events });
     });
   }
 
