@@ -62,53 +62,6 @@ class Dashboard extends Component {
 
     this.state = {
       events: []
-      /*
-        {
-          id: 1,
-          name: 'Pizza',
-          date: '11/10/2017',
-          time: 'Soir',
-          description: 'Petite pizza oklm',
-          icon: 'https://image.flaticon.com/icons/svg/167/167741.svg',
-          outdated: false
-        },
-        {
-          id: 1,
-          name: 'Basket',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Avec la team',
-          icon: 'https://image.flaticon.com/icons/svg/167/167739.svg',
-          outdated: false
-        },
-        {
-          id: 1,
-          name: 'Etudes',
-          date: '11/10/2017',
-          time: 'Aprem',
-          description: 'Avec la team',
-          icon: 'https://image.flaticon.com/icons/svg/167/167729.svg',
-          outdated: true
-        },
-        {
-          id: 1,
-          name: 'Salad party',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Un esprit sain dans un corps sain',
-          icon: 'https://image.flaticon.com/icons/svg/167/167759.svg',
-          outdated: true
-        },
-        {
-          id: 1,
-          name: 'Kung fu',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Un esprit sain dans un corps sain',
-          icon: 'https://image.flaticon.com/icons/svg/167/167752.svg',
-          outdated: true
-        }
-      ]*/
     };
   }
 
@@ -132,26 +85,26 @@ class Dashboard extends Component {
             </Link>
           </div>
           <hr />
-          <div className="columns is-multiline">
 
-            {!this.state.events.length
-              ? <div>
-                  <figure className="has-text-centered">
-                    <img src={emptyEvents} alt="profile_picture" />
-                  </figure>
-                  <p className="subtitle is-4 has-text-centered">
-                    Oops, vous n'avez aucun evenement..
-                  </p>
-                </div>
-              : this.state.events.map((e, i) => {
-                  return (
+          {!this.state.events.length
+            ? <div>
+                <figure className="has-text-centered">
+                  <img src={emptyEvents} alt="profile_picture" />
+                </figure>
+                <p className="subtitle is-4 has-text-centered">
+                  Oops, il n'y a aucun evenement..
+                </p>
+              </div>
+            : this.state.events.map((e, i) => {
+                return (
+                  <div className="columns is-multiline">
                     <div className="column is-one-third" key={i}>
                       <EventItem {...e} />
                     </div>
-                  );
-                })}
+                  </div>
+                );
+              })}
 
-          </div>
         </div>
       </div>
     );
