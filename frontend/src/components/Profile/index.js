@@ -81,12 +81,13 @@ class Profile extends Component {
         <TitleBar title="Profile" />
         <div className="section container">
           {!this.state.disabled &&
-            <a className="tag button is-medium is-pulled-right is-danger is-modifier">
-              <button
-                className="delete"
-                style={{ margin: '0 auto' }}
-                onClick={this.handleCickEdit}
-              />
+            <a
+              className="tag button is-medium is-pulled-right is-danger is-modifier"
+              onClick={this.handleCickEdit}
+            >
+              <span className="icon is-small">
+                <i className="fa fa-close" />
+              </span>
             </a>}
           <a
             className={classNames(
@@ -106,7 +107,11 @@ class Profile extends Component {
                 : this.handleSendInformation
             }
           >
-            {this.state.disabled ? 'Editer' : 'Valider'}
+            {this.state.disabled
+              ? 'Editer'
+              : <span className="icon is-small">
+                  <i className="fa fa-check" />
+                </span>}
           </a>
 
           <div className="tile is-vertical">
@@ -167,12 +172,11 @@ class Profile extends Component {
                     {this.state.disabled
                       ? <div
                           dangerouslySetInnerHTML={{
-                            __html:
-                              user.description &&
-                                user.description.replace(
-                                  /(?:\r\n|\r|\n)/g,
-                                  '<br />'
-                                )
+                            __html: user.description &&
+                              user.description.replace(
+                                /(?:\r\n|\r|\n)/g,
+                                '<br />'
+                              )
                           }}
                         />
                       : <div className="field">
