@@ -28,9 +28,16 @@ app.get('/me/infos', users.getOwnInfos);
 /* POST user informations */
 app.post('/me/infos', users.updateOwnInfos);
 /* GET user events */
-app.get('/me/events', users.getOwnEvents);
+app.get('/me/events', events.getOwnEvents);
 /* GET user match history */
 app.get('/me/history', users.getOwnHistory);
+
+/* GET all events */
+app.post('/event/new', events.createEvent);
+/* GET event by id */
+app.get('/event/:id', events.getEventById);
+/* GET all events */
+app.get('/event', events.listAllEvents);
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/meetin', function(err) {

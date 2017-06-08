@@ -49,17 +49,6 @@ module.exports = {
       });
   },
 
-  getOwnEvents: (req, res) => {
-    Event.find({ user_id: req.uid })
-      .then(data => {
-        return res.json(data);
-      })
-      .catch(error => {
-        console.error(error);
-        return res.sendStatus(500);
-      });
-  },
-
   getOwnHistory: (req, res) => {
     // FIXME: remove this when fixed
     User.find({ uid: { $ne: req.user.uid } }, null, {

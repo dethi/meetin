@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon app/index.js",
-    "populate": "node app/populateDB.js"
+    "populate": "node app/populate/index.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
