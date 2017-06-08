@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import firebase from 'firebase';
+
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -9,11 +10,8 @@ class Navbar extends Component {
     super(props);
 
     this.state = {
-      teamId: 1,
       isActive: false,
-      redirect: false,
-      hasError: false,
-      errorMsg: ''
+      redirect: false
     };
   }
 
@@ -25,12 +23,25 @@ class Navbar extends Component {
     e.preventDefault();
     firebase.auth().signOut().then(() => {
       this.setState({
-        redirect: true,
-        hasError: false,
-        errorMsg: ''
+        redirect: true
       });
     });
   };
+
+  menus = [
+    {
+      name: 'Dashboard',
+      to: '/'
+    },
+    {
+      name: 'Evenements',
+      to: '/evenement'
+    },
+    {
+      name: 'Découvrir',
+      to: '/discover'
+    }
+  ];
 
   render() {
     const { redirect } = this.state;
@@ -39,24 +50,6 @@ class Navbar extends Component {
       return <Redirect to="/" />;
     }
 
-    const menus = [
-      {
-        id: 'home',
-        name: 'Dashboard',
-        to: '/'
-      },
-      {
-        id: 'events',
-        name: 'Evenements',
-        to: '/evenement'
-      },
-      {
-        id: 'discover',
-        name: 'Découvrir',
-        to: '/discover'
-      }
-    ];
-
     return (
       <nav className="nav has-shadow">
         <div className="container">
@@ -64,7 +57,7 @@ class Navbar extends Component {
             <Link className="nav-item" to="/">
               <span className="title"><b>Meet'</b>In</span>
             </Link>
-            {menus.map((m, i) => {
+            {this.menus.map((m, i) => {
               return (
                 <Link
                   className={classNames(
@@ -73,7 +66,7 @@ class Navbar extends Component {
                     'is-hidden-mobile',
                     'is-primary',
                     {
-                      'is-active': this.props.menuActive === m.id
+                      'is-active': this.props.match.path === m.to
                     }
                   )}
                   key={'menu-' + i}
@@ -90,11 +83,11 @@ class Navbar extends Component {
             <span />
           </span>
           <div
-            className={
-              'nav-right nav-menu ' + (this.state.isActive ? 'is-active' : '')
-            }
+            className={classNames('nav-right', 'nav-menu', {
+              'is-active': this.state.isActive
+            })}
           >
-            {menus.map((m, i) => {
+            {this.menus.map((m, i) => {
               return (
                 <Link
                   className={classNames(
@@ -102,9 +95,7 @@ class Navbar extends Component {
                     'is-tab',
                     'is-hidden-tablet',
                     'is-primary',
-                    {
-                      'is-active': this.props.menuActive === m.id
-                    }
+                    { 'is-active': this.props.match.path === m.to }
                   )}
                   key={'mobile-menu-' + i}
                   to={m.to}
@@ -114,23 +105,22 @@ class Navbar extends Component {
               );
             })}
             <Link
-              className={
-                'nav-item is-tab is-primary ' +
-                  (this.props.menuActive === 'history' ? 'is-active' : '')
-              }
+              className={classNames('nav-item', 'is-tab', 'is-primary ', {
+                'is-active': this.props.match.path === '/history'
+              })}
               to={'/history'}
             >
               Historique
             </Link>
             <Link
-              className={
-                'nav-item is-tab is-primary ' +
-                  (this.props.menuActive === 'profile' ? 'is-active' : '')
-              }
+              className={classNames('nav-item', 'is-tab', 'is-primary ', {
+                'is-active': this.props.match.path === '/profile'
+              })}
               to="/profile"
             >
               Profile
             </Link>
+
             <Link className="nav-item is-tab" onClick={this.logout} to="/">
               Log out
             </Link>
@@ -141,4 +131,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
