@@ -126,6 +126,7 @@ export default class Evenement extends Component {
                             selected={this.state.time_period}
                             onChange={this.handleChange}
                             className="input"
+                            style={{ width: '100%' }}
                           />
                         </div>
                       </div>
