@@ -3,6 +3,9 @@ import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 import Category from './Category';
 import './Page.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
 export default class Evenement extends Component {
   constructor(props) {
@@ -15,9 +18,14 @@ export default class Evenement extends Component {
       description: '',
       category: '',
       date: new Date(),
-      time_period: ''
+      time_period: '',
+      startDate: moment()
     };
   }
+
+  handleChange = date => {
+    this.setState({ startDate: date });
+  };
 
   handleSelected = category => {
     this.setState({ category });
@@ -54,6 +62,7 @@ export default class Evenement extends Component {
             <div className="column is-half is-offset-one-quarter">
               <div className="box box--evenement">
                 <div className="column is-center">
+
                   <div className="field is-horizontal">
                     <div className="field-label is-normal">
                       <label className="label">Titre</label>
@@ -102,6 +111,23 @@ export default class Evenement extends Component {
                               <i className="fa fa-user" />
                             </span>
                           </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label">Date de fin</label>
+                    </div>
+                    <div className="field-body">
+                      <div className="field">
+                        <div className="control">
+                          <DatePicker
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                            className="input"
+                          />
                         </div>
                       </div>
                     </div>
