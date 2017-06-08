@@ -13,7 +13,7 @@ const menus = {
     },
     {
       name: 'Evenements',
-      to: '/evenement'
+      to: '/event'
     },
     {
       name: 'Découvrir',

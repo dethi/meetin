@@ -8,13 +8,14 @@ import Loading from './Loading';
 import Login from './Login';
 import Profile from './Profile';
 import Event from './Events/Item';
+import EventList from './Events/List';
 import History from './History';
 import Evenement from './Evenement';
 import Discover from './Discover';
 
 import './App.css';
 
-const PrivateRoute = ({ component: Component, isLogged, ...rest }) => (
+const PrivateRoute = ({ component: Component, isLogged, ...rest }) =>
   <Route
     {...rest}
     render={props =>
@@ -26,8 +27,7 @@ const PrivateRoute = ({ component: Component, isLogged, ...rest }) => (
               state: { from: props.location }
             }}
           />}
-  />
-);
+  />;
 
 const App = ({ isLoading, isLogged }) =>
   isLoading
@@ -48,7 +48,7 @@ const App = ({ isLoading, isLogged }) =>
           />
           <PrivateRoute
             exact
-            path="/evenement"
+            path="/event/new"
             component={Evenement}
             isLogged={isLogged}
           />
@@ -56,6 +56,12 @@ const App = ({ isLoading, isLogged }) =>
             exact
             path="/event/:id"
             component={Event}
+            isLogged={isLogged}
+          />
+          <PrivateRoute
+            exact
+            path="/event"
+            component={EventList}
             isLogged={isLogged}
           />
           <PrivateRoute
