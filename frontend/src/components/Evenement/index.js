@@ -32,7 +32,7 @@ export default class Evenement extends Component {
   };
 
   handleChangeSelected = event => {
-    this.setState({ nb_participant: parseInt(event.target.value) });
+    this.setState({ nb_participant: parseInt(event.target.value, 10) });
   };
 
   sendInformation = () => {
