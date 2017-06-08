@@ -31,8 +31,15 @@ class Profile extends Component {
     this.setState({ user: nextProps.user });
   }
 
-  handleCickEdit = () => {
+  handleEdit = () => {
     this.setState({ disabled: !this.state.disabled });
+  };
+
+  handleCancel = () => {
+    this.setState({
+      disabled: !this.state.disabled,
+      user: this.props.user
+    });
   };
 
   handleChangeDescription = event => {
@@ -83,7 +90,7 @@ class Profile extends Component {
           {!this.state.disabled &&
             <a
               className="tag button is-medium is-pulled-right is-danger is-modifier"
-              onClick={this.handleCickEdit}
+              onClick={this.handleCancel}
             >
               <span className="icon is-small">
                 <i className="fa fa-close" />
@@ -102,9 +109,7 @@ class Profile extends Component {
               }
             )}
             onClick={
-              this.state.disabled
-                ? this.handleCickEdit
-                : this.handleSendInformation
+              this.state.disabled ? this.handleEdit : this.handleSendInformation
             }
           >
             {this.state.disabled
@@ -172,11 +177,12 @@ class Profile extends Component {
                     {this.state.disabled
                       ? <div
                           dangerouslySetInnerHTML={{
-                            __html: user.description &&
-                              user.description.replace(
-                                /(?:\r\n|\r|\n)/g,
-                                '<br />'
-                              )
+                            __html:
+                              user.description &&
+                                user.description.replace(
+                                  /(?:\r\n|\r|\n)/g,
+                                  '<br />'
+                                )
                           }}
                         />
                       : <div className="field">
