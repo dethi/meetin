@@ -7,6 +7,7 @@ import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
 import { getOwnInfos, updateProfil } from './../../api';
+import './Profil.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -116,13 +117,13 @@ class Profile extends Component {
                     {this.state.disabled
                       ? <div>
                           <div>
-                            <span className="icon is-small">
+                            <span className="icon is-small margin-text">
                               <i className="fa fa-envelope-o" />
                             </span>
                             {user.email}
                           </div>
                           <div>
-                            <span className="icon is-small">
+                            <span className="icon is-small  margin-text">
                               <i className="fa fa-phone" />
                             </span>
                             {user.phone}
@@ -137,7 +138,7 @@ class Profile extends Component {
                               value={user.phone}
                               onChange={this.handleChangePhone}
                             />
-                            <span className="icon is-small is-left">
+                            <span className="icon is-small is-left ">
                               <i className="fa fa-phone" />
                             </span>
                           </p>
@@ -157,11 +158,12 @@ class Profile extends Component {
                     {this.state.disabled
                       ? <div
                           dangerouslySetInnerHTML={{
-                            __html: user.description &&
-                              user.description.replace(
-                                /(?:\r\n|\r|\n)/g,
-                                '<br />'
-                              )
+                            __html:
+                              user.description &&
+                                user.description.replace(
+                                  /(?:\r\n|\r|\n)/g,
+                                  '<br />'
+                                )
                           }}
                         />
                       : <div className="field">
