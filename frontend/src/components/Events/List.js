@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 import { Link } from 'react-router-dom';
 
@@ -109,7 +108,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <NavBar menuActive="events" />
         <TitleBar title="Evenements" />
         <div className="container">
           <div className="has-text-centered box-padded">

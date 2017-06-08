@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './../Navbar';
+
 import TitleBar from './../TitleBar';
 
 class Item extends Component {
@@ -18,7 +18,6 @@ class Item extends Component {
   render() {
     return (
       <div>
-        <NavBar menuActive="events" />
         <TitleBar title={this.state.title + ': ' + this.state.id} />
         <div className="section container">
           <div className="tile is-vertical">

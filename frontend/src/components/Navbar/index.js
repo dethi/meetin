@@ -56,7 +56,7 @@ class Navbar extends Component {
 
   render() {
     const { redirect } = this.state;
-    const { path } = this.props.match;
+    const { pathname } = this.props.location;
 
     if (redirect) {
       return <Redirect to="/" />;
@@ -77,7 +77,7 @@ class Navbar extends Component {
                   'is-tab',
                   'is-hidden-mobile',
                   'is-primary',
-                  { 'is-active': path === m.to }
+                  { 'is-active': pathname === m.to }
                 )}
                 key={'menu-' + i}
                 to={m.to}
@@ -105,7 +105,7 @@ class Navbar extends Component {
                   'is-tab',
                   'is-hidden-tablet',
                   'is-primary',
-                  { 'is-active': path === m.to }
+                  { 'is-active': pathname === m.to }
                 )}
                 key={'mobile-menu-' + i}
                 to={m.to}
@@ -117,7 +117,7 @@ class Navbar extends Component {
             {menus.right.map((m, i) =>
               <Link
                 className={classNames('nav-item', 'is-tab', 'is-primary ', {
-                  'is-active': path === m.to
+                  'is-active': pathname === m.to
                 })}
                 key={'menu-' + i}
                 to={m.to}

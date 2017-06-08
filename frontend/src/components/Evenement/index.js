@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './../Navbar';
+
 import TitleBar from './../TitleBar';
 import Category from './Category';
 import './Page.css';
@@ -53,7 +53,6 @@ export default class Evenement extends Component {
 
     return (
       <div>
-        <NavBar menuActive="events" />
         <TitleBar title="Hello" />
         <div className="container">
 

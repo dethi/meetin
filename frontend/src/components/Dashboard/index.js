@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
 import emptyEvents from './../../img/events-empty-data-set.png';
@@ -103,7 +102,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <NavBar menuActive="home" />
         <TitleBar title="Mon calendrier" />
         <div className="columns">
           <div className="column is-8-tablet is-10-mobile is-center">
@@ -117,7 +115,8 @@ class Dashboard extends Component {
               ? <div>
                   <figure className="has-text-centered">
                     <img src={emptyEvents} alt="profile_picture" />
-                  </figure><p className="subtitle is-4 has-text-centered">
+                  </figure>
+                  <p className="subtitle is-4 has-text-centered">
                     Oops, vous n'avez aucun evenement..
                   </p>
                 </div>

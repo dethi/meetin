@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
@@ -22,7 +21,6 @@ class History extends Component {
 
     return (
       <div>
-        <NavBar menuActive="history" />
         <TitleBar title="Mon Historique" />
         <div className="container">
           <div className="columns column is-8-desktop is-offset-2-desktop is-multiline">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import NavBar from './../Navbar';
 import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
@@ -84,7 +83,6 @@ class Profile extends Component {
 
     return (
       <div>
-        <NavBar menuActive="profile" />
         <TitleBar title="Profile" />
         <div className="section container">
           {!this.state.disabled &&

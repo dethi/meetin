@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Home from './Home';
 import Loading from './Loading';
+import Navbar from './Navbar';
 import Login from './Login';
 import Profile from './Profile';
 import Event from './Events/Item';
@@ -33,47 +34,50 @@ const App = ({ isLoading, isLogged }) =>
   isLoading
     ? <Loading />
     : <Router>
-        <Switch>
-          <PrivateRoute
-            exact
-            path="/discover"
-            component={Discover}
-            isLogged={isLogged}
-          />
-          <PrivateRoute
-            exact
-            path="/profile"
-            component={Profile}
-            isLogged={isLogged}
-          />
-          <PrivateRoute
-            exact
-            path="/event/new"
-            component={Evenement}
-            isLogged={isLogged}
-          />
-          <PrivateRoute
-            exact
-            path="/event/:id"
-            component={Event}
-            isLogged={isLogged}
-          />
-          <PrivateRoute
-            exact
-            path="/event"
-            component={EventList}
-            isLogged={isLogged}
-          />
-          <PrivateRoute
-            exact
-            path="/history"
-            component={History}
-            isLogged={isLogged}
-          />
+        <div>
+          {isLogged && <Navbar />}
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/discover"
+              component={Discover}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/profile"
+              component={Profile}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/event"
+              component={EventList}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/event/new"
+              component={Evenement}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/event/:id"
+              component={Event}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/history"
+              component={History}
+              isLogged={isLogged}
+            />
 
-          <Route exact path="/login" component={Login} />
-          <Route path="/" component={Home} />
-        </Switch>
+            <Route exact path="/login" component={Login} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
       </Router>;
 
 const mapStateToProps = state => {

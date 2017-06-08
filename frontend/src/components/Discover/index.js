@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import NavBar from './../Navbar';
+
 import TitleBar from './../TitleBar';
 
 import './Discover.css';
@@ -80,7 +80,6 @@ class Discover extends Component {
   render() {
     return (
       <div>
-        <NavBar menuActive="discover" />
         <TitleBar title="Découvrir" />
         <div className="columns">
           <div className="column is-10 is-center">
