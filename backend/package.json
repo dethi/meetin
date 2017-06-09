@@ -13,7 +13,7 @@
     "express-minify": "^0.2.0",
     "firebase-admin": "^5.0.0",
     "mongodb": "^2.2.27",
-    "mongoose": "^4.10.4",
+    "mongoose": "^4.7.2",
     "nodemon": "^1.11.0",
     "request": "^2.81.0"
   }
