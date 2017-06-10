@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dateformat from 'dateformat';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import TitleBar from './../TitleBar';
+import './Event.css';
 
 import { getEventById, suscribeById, unsuscribeById } from './../../api';
 
@@ -23,12 +25,14 @@ class Item extends Component {
         category: '',
         address: '',
         date: Date(),
-        time: ''
+        time: '',
+        lat: 0,
+        lng: 0
       }
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     getEventById(this.props.match.params.id).then(event => {
       this.setState({ event });
     });
@@ -42,7 +46,6 @@ class Item extends Component {
 
   handleUnsignToEvent() {
     unsuscribeById(this.props.match.params.id).then(event => {
-      console.log(event);
       this.setState({ event });
     });
   }
@@ -54,6 +57,8 @@ class Item extends Component {
     const isSuscribed = event.participants.reduce((a, b) => {
       return a || b.uid === this.state.user.uid;
     }, false);
+
+    const position = event.lat && event.lng ? [event.lat, event.lng] : null;
 
     return (
       <div>
@@ -102,6 +107,15 @@ class Item extends Component {
                     <p className="title">Plan</p>
                     <hr />
                     <p />
+
+                    {position &&
+                      <Map center={position} zoom={13}>
+                        <TileLayer
+                          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                          attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        />
+                        <Marker position={position} />
+                      </Map>}
                   </div>
                 </article>
               </div>
