@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import { addEvent, getOwnInfos } from './../../api';
 import { Redirect } from 'react-router-dom';
+import Autocomplete from 'react-google-autocomplete';
 
 class Evenement extends Component {
   constructor(props) {
@@ -105,6 +106,28 @@ class Evenement extends Component {
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label">Adresse</label>
+                    </div>
+                    <div className="field-body">
+                      <div className="field">
+                        <div className="control">
+                          <Autocomplete
+                            style={{ width: '100%' }}
+                            onPlaceSelected={place => {
+                              console.log(place);
+                            }}
+                            types={['establishment', 'geocode']}
+                            componentRestrictions={{ country: 'fr' }}
+                            className="input"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
 
                   <div className="field is-horizontal">
