@@ -17,35 +17,37 @@ app.use(isAuthenticated);
 app.use(createUserIfNotExist);
 
 /* GET event icons list */
-app.get('/event/icon', events.listAllIcon);
+app.get('/api/event/icon', events.listAllIcon);
 
 /* GET list of users */
-app.get('/user', users.listAll);
+app.get('/api/user', users.listAll);
 /* GET user informations */
-app.get('/user/:uid', users.getInfosById);
+app.get('/api/user/:uid', users.getInfosById);
 
 /* GET user informations */
-app.get('/me/infos', users.getOwnInfos);
+app.get('/api/me/infos', users.getOwnInfos);
 /* POST user informations */
-app.post('/me/infos', users.updateOwnInfos);
+app.post('/api/me/infos', users.updateOwnInfos);
 /* GET user events */
-app.get('/me/events', events.getOwnEvents);
+app.get('/api/me/events', events.getOwnEvents);
 /* GET user match history */
-app.get('/me/history', users.getOwnHistory);
+app.get('/api/me/history', users.getOwnHistory);
 
 /* POST create new event */
-app.post('/event/new', events.createEvent);
+app.post('/api/event/new', events.createEvent);
 /* Suscribe to event by id */
-app.get('/event/:id/suscribe', events.subscribeById);
+app.get('/api/event/:id/suscribe', events.subscribeById);
 /* Unsuscribe to event by id */
-app.get('/event/:id/unsuscribe', events.unsubscribeById);
+app.get('/api/event/:id/unsuscribe', events.unsubscribeById);
 /* GET event by id */
-app.get('/event/:id', events.getEventById);
+app.get('/api/event/:id', events.getEventById);
 /* GET all events */
-app.get('/event', events.listAllEvents);
+app.get('/api/event', events.listAllEvents);
 
-app.get('/match/suggest', matchs.suggestMatch);
-app.post('/match/new', matchs.newMatch);
+/* GET match suggestion */
+app.get('/api/match/suggest', matchs.suggestMatch);
+/* POST a new match */
+app.post('/api/match/new', matchs.newMatch);
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/meetin', function(err) {
