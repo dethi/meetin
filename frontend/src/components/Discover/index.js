@@ -86,34 +86,46 @@ class Discover extends Component {
   render() {
     const { matchedUser } = this.state;
 
+    const inlineTitle = {
+      margin: '0 auto',
+      marginTop: '190px',
+      fontSize: '55px',
+      color: '#FFCC80'
+    };
+
     return (
       <div>
         <TitleBar title="Découvrir" />
         <div className="columns">
-          {matchedUser &&
-            <div className="column is-10 is-center">
-              <CardItem
-                cardType="left"
-                isSelected={this.state.cardSelected === 0}
-                hasSelected={this.state.cardSelected !== null}
-                onClick={() => this.toggleCard(0)}
-                user={matchedUser}
-              />
-              <CardItem
-                cardType="center"
-                isSelected={this.state.cardSelected === 1}
-                hasSelected={this.state.cardSelected !== null}
-                onClick={() => this.toggleCard(1)}
-                user={matchedUser}
-              />
-              <CardItem
-                cardType="right"
-                isSelected={this.state.cardSelected === 2}
-                hasSelected={this.state.cardSelected !== null}
-                onClick={() => this.toggleCard(2)}
-                user={matchedUser}
-              />
-            </div>}
+          {matchedUser
+            ? <div className="column is-10 is-center">
+                <CardItem
+                  cardType="left"
+                  isSelected={this.state.cardSelected === 0}
+                  hasSelected={this.state.cardSelected !== null}
+                  onClick={() => this.toggleCard(0)}
+                  user={matchedUser}
+                />
+                <CardItem
+                  cardType="center"
+                  isSelected={this.state.cardSelected === 1}
+                  hasSelected={this.state.cardSelected !== null}
+                  onClick={() => this.toggleCard(1)}
+                  user={matchedUser}
+                />
+                <CardItem
+                  cardType="right"
+                  isSelected={this.state.cardSelected === 2}
+                  hasSelected={this.state.cardSelected !== null}
+                  onClick={() => this.toggleCard(2)}
+                  user={matchedUser}
+                />
+              </div>
+            : <h1 style={inlineTitle}>
+                {' '}Nous n'avons plus d'amis à vous proposer 🙅😅😇
+                {' '}
+              </h1>}
+
         </div>
       </div>
     );

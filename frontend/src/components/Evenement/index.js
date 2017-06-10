@@ -76,11 +76,12 @@ class Evenement extends Component {
 
     return (
       <div>
-        <TitleBar title="Hello" />
+        <TitleBar title="Votre évènement" />
         <div className="container">
           {this.state.error &&
             <div className="notification is-danger box-error">
               Une erreur s'est produite. Veuillez vérifier vos informations.
+              🤷🙏
             </div>}
 
           <div className="columns">
