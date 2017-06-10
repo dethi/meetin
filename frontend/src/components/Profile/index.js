@@ -13,15 +13,16 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       disabled: true,
       user: this.props.user
     };
+  }
 
+  componentWillMount() {
     getOwnInfos().then(user => {
       if (user) {
         this.props.dispatch(userAction.updateInfos(user));
-        this.setState({ isLoading: false });
       }
     });
   }
@@ -78,14 +79,20 @@ class Profile extends Component {
   };
 
   handleSendInformation = () => {
-    updateProfil({
-      description: this.state.user.description,
-      phone: this.state.user.phone,
-      displayName: this.state.user.displayName
-    });
+    this.setState({ disabled: true, isLoading: true });
 
-    this.props.dispatch(userAction.updateInfos(this.state.user));
-    this.setState({ disabled: true });
+    const { user } = this.state;
+
+    updateProfil({
+      description: user.description,
+      phone: user.phone,
+      displayName: user.displayName
+    }).then(ok => {
+      if (ok) {
+        this.props.dispatch(userAction.updateInfos(user));
+      }
+      this.setState({ isLoading: false });
+    });
   };
 
   render() {
