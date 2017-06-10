@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Bangers);
-
-
 .flipcard-container {
   width: 300px;
   height: 420px;
@@ -99,38 +96,4 @@
     100% { left: -350px; }
 }
 
-.wrap {
-  padding: 5em 0.5em;
-  margin: 0 auto;
-}
 
-h1 {
-  text-align: center;
-  font-weight: normal;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 8em;
-  white-space: nowrap;
-  font-size: 12vw;
-  z-index: 1000;
-  font-family: 'Bangers', cursive;
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
-  -moz-transform: skew(0, -6.7deg);
-  -ms-transform: skew(0, -6.7deg);
-  -webkit-transform: skew(0, -6.7deg);
-  transform: skew(0, -6.7deg);
-  -moz-transition-property: font-size;
-  -o-transition-property: font-size;
-  -webkit-transition-property: font-size;
-  transition-property: font-size;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-
-@media screen and (max-width: 50em) {
-  h1 {
-    font-size: 20vw;
-  }
-}
