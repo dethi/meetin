@@ -20,7 +20,6 @@ firebase.auth().onIdTokenChanged(user => {
   if (user) {
     user.getIdToken().then(token => {
       axios.defaults.headers.common['X-Token'] = token;
-
       const { uid, displayName, photoURL, email } = user;
       store.dispatch(userAction.login({ uid, displayName, photoURL, email }));
     });
