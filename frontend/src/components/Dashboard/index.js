@@ -20,12 +20,14 @@ class EventItem extends Component {
       >
         <article className="media">
           <div className="media-left is-vcentered">
-            <figure className="image is-128x128" style={{ padding: '20px' }}>
-              <img
-                src={categories[this.props.category]}
-                alt={this.props.name}
-              />
-            </figure>
+            <Link to={'/event/' + this.props._id}>
+              <figure className="image is-128x128" style={{ padding: '20px' }}>
+                <img
+                  src={categories[this.props.category]}
+                  alt={this.props.name}
+                />
+              </figure>
+            </Link>
           </div>
           <div className="media-content is-vcentered">
             <div className="content">
