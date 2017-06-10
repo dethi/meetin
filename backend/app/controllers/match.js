@@ -34,14 +34,14 @@ module.exports = {
 
   suggestMatch: (req, res) => {
     Match.find({
-      $or: [{ owner: req.user.uid }, { match_user: req.user.uid }],
-      selected: false
+      $or: [{ owner: req.user.uid }, { match_user: req.user.uid }]
     })
       .then(matchs => {
-        const allMatchedUser = matchs.reduce((acc, m) => {
-          return acc.append(m.owner === req.user.uid ? m.match_user : m.owner);
-        }, []);
-
+        const allMatchedUser = [
+          ...new Set(
+            [].concat.apply([], matchs.map(e => [e.owner, e.match_user]))
+          )
+        ];
         return User.find({ uid: { $nin: allMatchedUser } });
       })
       .then(users => {

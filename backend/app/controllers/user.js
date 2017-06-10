@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 var User = require('../models/user');
-var History = require('../models/history');
+var Match = require('../models/match');
 var Event = require('../models/event');
 
 module.exports = {
@@ -50,25 +50,23 @@ module.exports = {
   },
 
   getOwnHistory: (req, res) => {
-    // FIXME: remove this when fixed
-    User.find({ uid: { $ne: req.user.uid } })
-      .then(data => {
-        return res.json(data);
+    Match.find({
+      $or: [{ owner: req.user.uid }, { match_user: req.user.uid }]
+    })
+      .then(matchs => {
+        const allMatchedUser = [
+          ...new Set(
+            [].concat.apply([], matchs.map(e => [e.owner, e.match_user]))
+          )
+        ];
+        return User.find({ uid: { $in: allMatchedUser } });
+      })
+      .then(users => {
+        return res.json(users);
       })
       .catch(error => {
         console.error(error);
         return res.sendStatus(500);
       });
-
-    /*
-    History.find({ user_id: req.uid })
-      .then(data => {
-        return res.json(data);
-      })
-      .catch(error => {
-        console.error(error);
-        return res.sendStatus(500);
-      });
-      */
   }
 };
