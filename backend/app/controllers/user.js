@@ -51,21 +51,24 @@ module.exports = {
 
   getOwnHistory: (req, res) => {
     Match.find({
-      $or: [{ owner: req.user.uid }, { match_user: req.user.uid }]
+      $or: [{ owner: req.user._id }, { match_user: req.user._id }]
     })
       .then(matchs => {
-        const allMatchedUser = [
-          ...new Set(
-            [].concat.apply([], matchs.map(e => [e.owner, e.match_user]))
-          )
-        ];
-        return User.find({ uid: { $in: allMatchedUser } });
+        const allMatchedUser = new Set(
+          [].concat.apply([], matchs.map(e => [e.owner, e.match_user]))
+        );
+
+        return User.find({
+          $and: [
+            { _id: { $ne: req.user._id } },
+            { _id: { $in: [...allMatchedUser] } }
+          ]
+        });
       })
       .then(users => {
         return res.json(users);
       })
       .catch(error => {
-        console.error(error);
         return res.sendStatus(500);
       });
   }

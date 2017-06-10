@@ -35,7 +35,7 @@ module.exports = {
           ),
           req.user._id
         ];
-        return User.find({ uid: { $nin: allMatchedUser } });
+        return User.find({ _id: { $nin: allMatchedUser } });
       })
       .then(users => {
         return res.json(users[Math.floor(Math.random() * users.length)]);
