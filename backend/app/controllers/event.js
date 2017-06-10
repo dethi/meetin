@@ -21,7 +21,12 @@ module.exports = {
   },
 
   getOwnEvents: (req, res) => {
-    Event.find({ user_id: req.uid })
+    Event.find({
+      $or: [
+        { participants: { $elemMatch: { $eq: req.user._id } } },
+        { owner: req.user._id }
+      ]
+    })
       .sort({ date: -1 })
       .then(data => {
         return res.json(data);

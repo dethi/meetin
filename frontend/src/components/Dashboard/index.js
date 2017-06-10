@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import TitleBar from './../TitleBar';
+import classNames from 'classnames';
 
 import { Link } from 'react-router-dom';
 import { getOwnEvents } from './../../api';
+import categories from './../../categories';
 
 import emptyEvents from './../../img/events-empty-data-set.png';
 
+import './Dashboard.css';
+
 class EventItem extends Component {
   render() {
-    const outdated = {
-      opacity: '0.6',
-      filter: 'brightness(90%)'
-    };
-
     return (
-      <div className="box" style={this.props.date < new Date()}>
+      <div
+        className={classNames('box', {
+          outdated: this.props.date < new Date()
+        })}
+      >
         <article className="media">
           <div className="media-left is-vcentered">
             <figure className="image is-128x128" style={{ padding: '20px' }}>
-              <img src={this.props.icon} alt={this.props.name} />
+              <img
+                src={categories[this.props.category]}
+                alt={this.props.name}
+              />
             </figure>
           </div>
           <div className="media-content is-vcentered">
@@ -58,6 +64,7 @@ class Dashboard extends Component {
 
   componentWillMount() {
     getOwnEvents().then(events => {
+      console.log(events);
       if (events) this.setState({ events });
     });
   }

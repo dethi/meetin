@@ -1,0 +1,4 @@
+.outdated {
+  opacity: 0.6;
+  filter: brightness(90%);
+}
