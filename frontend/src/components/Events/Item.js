@@ -66,8 +66,8 @@ class Item extends Component {
                   <div className="bottom-spaced">
                     <p className="title">Informations générales</p>
                     <hr />
-                    <div className="columns is-multiline">
-                      <div className="column is-half">
+                    <div className="columns">
+                      <div className="column is-one-third">
                         <span className="icon is-large is-vcentered">
                           <i className="fa fa-calendar" />
                         </span>
@@ -75,7 +75,7 @@ class Item extends Component {
                           {dateformat(event.date, 'dd/mm/yyyy')}
                         </span>
                       </div>
-                      <div className="column is-half">
+                      <div className="column is-one-third">
                         <span className="icon is-large is-vcentered">
                           <i className="fa fa-clock-o" />
                         </span>
@@ -83,7 +83,7 @@ class Item extends Component {
                           {event.time}
                         </span>
                       </div>
-                      <div className="column is-half">
+                      <div className="column is-one-third">
                         <span className="icon is-large is-vcentered">
                           <i className="fa fa-users" />
                         </span>
