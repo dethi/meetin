@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import TitleBar from './../TitleBar';
 
+import { Link } from 'react-router-dom';
+import { getOwnEvents } from './../../api';
+
 import emptyEvents from './../../img/events-empty-data-set.png';
 
 class EventItem extends Component {
@@ -11,7 +14,7 @@ class EventItem extends Component {
     };
 
     return (
-      <div className="box" style={this.props.outdated ? outdated : null}>
+      <div className="box" style={this.props.date < new Date()}>
         <article className="media">
           <div className="media-left is-vcentered">
             <figure className="image is-128x128" style={{ padding: '20px' }}>
@@ -49,54 +52,14 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      events: [
-        {
-          id: 1,
-          name: 'Pizza',
-          date: '11/10/2017',
-          time: 'Soir',
-          description: 'Petite pizza oklm',
-          icon: 'https://image.flaticon.com/icons/svg/167/167741.svg',
-          outdated: false
-        },
-        {
-          id: 1,
-          name: 'Basket',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Avec la team',
-          icon: 'https://image.flaticon.com/icons/svg/167/167739.svg',
-          outdated: false
-        },
-        {
-          id: 1,
-          name: 'Etudes',
-          date: '11/10/2017',
-          time: 'Aprem',
-          description: 'Avec la team',
-          icon: 'https://image.flaticon.com/icons/svg/167/167729.svg',
-          outdated: true
-        },
-        {
-          id: 1,
-          name: 'Salad party',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Un esprit sain dans un corps sain',
-          icon: 'https://image.flaticon.com/icons/svg/167/167759.svg',
-          outdated: true
-        },
-        {
-          id: 1,
-          name: 'Kung fu',
-          date: '11/10/2017',
-          time: 'Midi',
-          description: 'Un esprit sain dans un corps sain',
-          icon: 'https://image.flaticon.com/icons/svg/167/167752.svg',
-          outdated: true
-        }
-      ]
+      events: []
     };
+  }
+
+  componentWillMount() {
+    getOwnEvents().then(events => {
+      if (events) this.setState({ events });
+    });
   }
 
   render() {
@@ -106,9 +69,12 @@ class Dashboard extends Component {
         <div className="columns">
           <div className="column is-8-tablet is-10-mobile is-center">
             <div className="has-text-centered box-padded">
-              <button className="button is-large is-info is-outlined">
+              <Link
+                className="button is-large is-info is-outlined"
+                to="/discover"
+              >
                 Me proposer un meeting
-              </button>
+              </Link>
             </div>
             <hr />
             {!this.state.events.length

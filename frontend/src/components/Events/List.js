@@ -5,6 +5,7 @@ import ellipsize from 'ellipsize';
 import TitleBar from './../TitleBar';
 import { Link } from 'react-router-dom';
 import { listEvents } from './../../api';
+import categories from './../../categories';
 
 import emptyEvents from './../../img/events-empty-data-set.png';
 
@@ -24,7 +25,10 @@ class EventItem extends Component {
                 className="image is-128x128"
                 style={{ padding: '20px', cursor: 'pointer' }}
               >
-                <img src={this.props.icon} alt={this.props.name} />
+                <img
+                  src={categories[this.props.category]}
+                  alt={this.props.name}
+                />
               </figure>
             </Link>
           </div>
