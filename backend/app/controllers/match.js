@@ -34,13 +34,14 @@ module.exports = {
 
   suggestMatch: (req, res) => {
     Match.find({
-      $or: [{ owner: req.user.uid }, { match_user: req.user.uid }]
+      $or: [{ owner: req.user._id }, { match_user: req.user._id }]
     })
       .then(matchs => {
         const allMatchedUser = [
           ...new Set(
             [].concat.apply([], matchs.map(e => [e.owner, e.match_user]))
-          )
+          ),
+          req.user._id
         ];
         return User.find({ uid: { $nin: allMatchedUser } });
       })
