@@ -96,11 +96,4 @@
     100% { left: -350px; }
 }
 
-.insetshadow {
-  color: #202020;
-  letter-spacing: .1em;
-  text-shadow: -1px -1px 1px #111, 2px 2px 1px #363636;
-  margin: 0 auto;
-  font-size: 40px;
-  margin-top: 175px;
-}
+

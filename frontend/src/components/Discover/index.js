@@ -114,9 +114,8 @@ class Discover extends Component {
                   user={matchedUser}
                 />
               </div>
-            : <h1 className="insetshadow">
-                {' '}Nous n'avons plus d'amis à vous proposer 🙅😅😇
-                {' '}
+            : <h1>
+                Nous n'avons plus d'amis à vous proposer 🙅😅😇
               </h1>}
         </div>
       </div>
