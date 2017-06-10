@@ -2,32 +2,29 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import TitleBar from './../TitleBar';
+import { getMatchSuggest } from './../../api';
 
 import './Discover.css';
 
 class CardItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   toggleCard = () => {
     this.props.onClick();
   };
 
   render() {
+    const { cardType, isSelected, hasSelected, user } = this.props;
+
     return (
       <div
-        className={classNames('flipcard-container', this.props.cardType, {
-          isSelected: this.props.isSelected,
-          hasSelected: this.props.hasSelected
+        className={classNames('flipcard-container', cardType, {
+          isSelected: isSelected,
+          hasSelected: hasSelected
         })}
         onClick={this.toggleCard}
       >
         <div
           className={classNames('flipcard', {
-            flipped: this.props.isSelected
+            flipped: isSelected
           })}
           onClick={this.toggleCard}
         >
@@ -37,10 +34,7 @@ class CardItem extends Component {
             <div className="card boxed">
               <a className="card-image" to={''}>
                 <figure className="image is-square">
-                  <img
-                    src="https://scontent-cdg2-1.xx.fbcdn.net/v/t31.0-8/11856321_564262337057061_6187415250851908431_o.jpg?oh=937a29bc2a0ebddbaa5668bf161edac1&oe=59A04E0C"
-                    alt="profile_picture"
-                  />
+                  <img src={user.photoURL} alt="profile_picture" />
                 </figure>
               </a>
               <div className="card-content">
@@ -50,7 +44,7 @@ class CardItem extends Component {
                       Share <b>a Pizza</b>
                     </p>
                     <p className="title is-5 has-text-right">
-                      with Kevin Louzoun
+                      with {user.displayName}
                     </p>
                   </div>
                 </div>
@@ -69,8 +63,16 @@ class Discover extends Component {
     super(props);
 
     this.state = {
-      cardSelected: null
+      cardSelected: null,
+      user: null
     };
+  }
+
+  componentWillMount() {
+    getMatchSuggest().then(matchedUser => {
+      console.log(matchedUser);
+      this.setState({ user: matchedUser });
+    });
   }
 
   toggleCard = e => {
@@ -78,30 +80,36 @@ class Discover extends Component {
   };
 
   render() {
+    const { user } = this.state;
+
     return (
       <div>
         <TitleBar title="Découvrir" />
         <div className="columns">
-          <div className="column is-10 is-center">
-            <CardItem
-              cardType="left"
-              isSelected={this.state.cardSelected === 0}
-              hasSelected={this.state.cardSelected !== null}
-              onClick={() => this.toggleCard(0)}
-            />
-            <CardItem
-              cardType="center"
-              isSelected={this.state.cardSelected === 1}
-              hasSelected={this.state.cardSelected !== null}
-              onClick={() => this.toggleCard(1)}
-            />
-            <CardItem
-              cardType="right"
-              isSelected={this.state.cardSelected === 2}
-              hasSelected={this.state.cardSelected !== null}
-              onClick={() => this.toggleCard(2)}
-            />
-          </div>
+          {user &&
+            <div className="column is-10 is-center">
+              <CardItem
+                cardType="left"
+                isSelected={this.state.cardSelected === 0}
+                hasSelected={this.state.cardSelected !== null}
+                onClick={() => this.toggleCard(0)}
+                user={user}
+              />
+              <CardItem
+                cardType="center"
+                isSelected={this.state.cardSelected === 1}
+                hasSelected={this.state.cardSelected !== null}
+                onClick={() => this.toggleCard(1)}
+                user={user}
+              />
+              <CardItem
+                cardType="right"
+                isSelected={this.state.cardSelected === 2}
+                hasSelected={this.state.cardSelected !== null}
+                onClick={() => this.toggleCard(2)}
+                user={user}
+              />
+            </div>}
         </div>
       </div>
     );

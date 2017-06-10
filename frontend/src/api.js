@@ -57,3 +57,7 @@ export function AddEvent(uid, json) {
       console.log(error);
     });
 }
+
+export function getMatchSuggest() {
+  return axios.get('/match/suggest').then(res => res.data).catch(err => null);
+}

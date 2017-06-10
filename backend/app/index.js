@@ -8,6 +8,7 @@ const isAuthenticated = require('./middlewares/isAuthenticated');
 const createUserIfNotExist = require('./middlewares/createUserIfNotExist');
 const events = require('./controllers/event');
 const users = require('./controllers/user');
+const matchs = require('./controllers/match');
 
 const app = Express();
 app.use(bodyParser.json());
@@ -38,6 +39,9 @@ app.post('/event/new', events.createEvent);
 app.get('/event/:id', events.getEventById);
 /* GET all events */
 app.get('/event', events.listAllEvents);
+
+app.get('/match/suggest', matchs.suggestMatch);
+app.post('/match/new', matchs.newMatch);
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/meetin', function(err) {
