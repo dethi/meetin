@@ -31,7 +31,7 @@ class EventItem extends Component {
             <div className="content">
               <p>
                 <span className="title is-3">
-                  <strong>{this.props.name}</strong>
+                  <strong>{this.props.title}</strong>
                 </span>
                 <br />
                 <span className="icon is-small" style={{ marginRight: '5px' }}>
