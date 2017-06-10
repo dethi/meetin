@@ -48,7 +48,7 @@ export function AddEvent(uid, json) {
     .post('/event/new', {
       ...json,
       owner: uid,
-      time: console.log(json.hour + 'H' + json.minutes)
+      time: json.hour + 'H' + json.minutes
     })
     .then(function(response) {
       return response.status === 200;

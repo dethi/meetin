@@ -59,8 +59,6 @@ module.exports = {
       return res.sendStatus(500);
     }
 
-    console.log(req.body.owner);
-
     new Event({
       owner: req.body.owner,
       participants: req.body.participants,

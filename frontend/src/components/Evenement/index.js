@@ -116,7 +116,9 @@ class Evenement extends Component {
                                   .map(Number.call, Number)
                                   .map(i => {
                                     return (
-                                      <option value={i + 2}>{i + 2}</option>
+                                      <option key={i} value={i + 2}>
+                                        {i + 2}
+                                      </option>
                                     );
                                   })}
                               </select>
