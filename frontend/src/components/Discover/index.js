@@ -86,13 +86,6 @@ class Discover extends Component {
   render() {
     const { matchedUser } = this.state;
 
-    const inlineTitle = {
-      margin: '0 auto',
-      marginTop: '190px',
-      fontSize: '55px',
-      color: '#FFCC80'
-    };
-
     return (
       <div>
         <TitleBar title="Découvrir" />
@@ -121,11 +114,10 @@ class Discover extends Component {
                   user={matchedUser}
                 />
               </div>
-            : <h1 style={inlineTitle}>
+            : <h1 className="insetshadow">
                 {' '}Nous n'avons plus d'amis à vous proposer 🙅😅😇
                 {' '}
               </h1>}
-
         </div>
       </div>
     );
