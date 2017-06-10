@@ -33,8 +33,12 @@ app.get('/me/events', events.getOwnEvents);
 /* GET user match history */
 app.get('/me/history', users.getOwnHistory);
 
-/* GET all events */
+/* POST create new event */
 app.post('/event/new', events.createEvent);
+/* Suscribe to event by id */
+app.get('/event/:id/suscribe', events.subscribeById);
+/* Unsuscribe to event by id */
+app.get('/event/:id/unsuscribe', events.unsubscribeById);
 /* GET event by id */
 app.get('/event/:id', events.getEventById);
 /* GET all events */

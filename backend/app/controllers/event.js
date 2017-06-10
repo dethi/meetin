@@ -45,6 +45,40 @@ module.exports = {
       });
   },
 
+  subscribeById: (req, res) => {
+    Event.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { participants: req.user._id } }
+    )
+      .populate('owner')
+      .populate('participants')
+      .then(u => {
+        u.participants.push(req.user);
+        return res.json(u);
+      })
+      .catch(e => {
+        console.log(e);
+        return res.sendStatus(500);
+      });
+  },
+
+  unsubscribeById: (req, res) => {
+    Event.findOneAndUpdate(
+      { _id: req.params.id },
+      { $pull: { participants: req.user._id } }
+    )
+      .populate('owner')
+      .populate('participants')
+      .then(u => {
+        u.participants = u.participants.filter(u => u.uid != req.user.uid);
+        return res.json(u);
+      })
+      .catch(e => {
+        console.log(e);
+        return res.sendStatus(500);
+      });
+  },
+
   createEvent: (req, res) => {
     if (
       req.body == null ||

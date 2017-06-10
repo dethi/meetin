@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// FIXME: is this usefull ?
 export function getEventIcon() {
   return axios.get('/event/icons').then(res => res.data).catch(err => null);
 }
@@ -30,6 +31,20 @@ export function listEvents() {
 
 export function getEventById(id) {
   return axios.get(`/event/${id}`).then(res => res.data).catch(err => null);
+}
+
+export function suscribeById(id) {
+  return axios
+    .get(`/event/${id}/suscribe`)
+    .then(res => res.data)
+    .catch(err => null);
+}
+
+export function unsuscribeById(id) {
+  return axios
+    .get(`/event/${id}/unsuscribe`)
+    .then(res => res.data)
+    .catch(err => null);
 }
 
 export function updateProfil(infos) {

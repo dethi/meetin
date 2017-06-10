@@ -1,43 +1,63 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import dateformat from 'dateformat';
 
 import TitleBar from './../TitleBar';
 
-import { getEventById } from './../../api';
+import { getEventById, suscribeById, unsuscribeById } from './../../api';
 
 class Item extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      owner: {},
-      participants: [],
-      max_participants: 10,
-      title: '',
-      description: '',
-      category: '',
-      address: '',
-      date: Date(),
-      time: ''
+      user: this.props.user,
+      event: {
+        _id: null,
+        isSuscribed: false,
+        owner: {},
+        participants: [],
+        max_participants: 10,
+        title: '',
+        description: '',
+        category: '',
+        address: '',
+        date: Date(),
+        time: ''
+      }
     };
   }
 
   componentWillMount() {
     getEventById(this.props.match.params.id).then(event => {
-      this.setState({ ...event });
+      this.setState({ event });
     });
   }
 
   handleSignToEvent() {
-    console.log('click');
+    suscribeById(this.props.match.params.id).then(event => {
+      this.setState({ event });
+    });
+  }
+
+  handleUnsignToEvent() {
+    unsuscribeById(this.props.match.params.id).then(event => {
+      console.log(event);
+      this.setState({ event });
+    });
   }
 
   render() {
-    const fullEvent =
-      this.state.participants.length === this.state.max_participants;
+    const event = this.state.event;
+
+    const fullEvent = event.participants.length === event.max_participants;
+    const isSuscribed = event.participants.reduce((a, b) => {
+      return a || b.uid === this.state.user.uid;
+    }, false);
+
     return (
       <div>
-        <TitleBar title={this.state.title} />
+        <TitleBar title={event.title} />
         <div className="section container">
           <div className="tile is-vertical">
             <div className="tile">
@@ -52,7 +72,7 @@ class Item extends Component {
                           <i className="fa fa-calendar" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          {dateformat(this.state.date, 'dd/mm/yyyy')}
+                          {dateformat(event.date, 'dd/mm/yyyy')}
                         </span>
                       </div>
                       <div className="column is-half">
@@ -60,7 +80,7 @@ class Item extends Component {
                           <i className="fa fa-clock-o" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          {this.state.time}
+                          {event.time}
                         </span>
                       </div>
                       <div className="column is-half">
@@ -68,7 +88,7 @@ class Item extends Component {
                           <i className="fa fa-users" />
                         </span>
                         <span className="subtitle hspaced is-vcentered">
-                          <b>{this.state.participants.length}</b>/{this.state.max_participants}
+                          <b>{event.participants.length}</b>/{event.max_participants}
                         </span>
                       </div>
                     </div>
@@ -76,7 +96,7 @@ class Item extends Component {
                   <div className="bottom-spaced">
                     <p className="title">Description</p>
                     <hr />
-                    <p>{this.state.description}</p>
+                    <p>{event.description}</p>
                   </div>
                   <div className="bottom-spaced">
                     <p className="title">Plan</p>
@@ -88,37 +108,43 @@ class Item extends Component {
               <div className="tile is-parent is-vertical is-3">
                 <article className="tile is-child">
                   <figure className="image is-square">
-                    <img
-                      src={this.state.owner.photoURL}
-                      alt="profile_picture"
-                    />
+                    <img src={event.owner.photoURL} alt="profile_picture" />
                   </figure>
                 </article>
                 <article className="tile is-child">
-                  {fullEvent
-                    ? <button className="button is-fullwidth box-padded subtitle is-4 is-dark is-disabled">
-                        COMPLET
-                      </button>
-                    : <button
-                        className="button is-fullwidth box-padded subtitle is-4 is-success"
-                        onClick={this.handleSignToEvent.bind(this)}
+                  {isSuscribed
+                    ? <button
+                        className="button is-fullwidth box-padded subtitle is-4 is-danger"
+                        onClick={this.handleUnsignToEvent.bind(this)}
                       >
-                        S'inscrire
-                      </button>}
+                        Se désinscrire
+                      </button>
+                    : fullEvent
+                      ? <button className="button is-fullwidth box-padded subtitle is-4 is-dark is-disabled">
+                          COMPLET
+                        </button>
+                      : <button
+                          className="button is-fullwidth box-padded subtitle is-4 is-success"
+                          onClick={this.handleSignToEvent.bind(this)}
+                        >
+                          S'inscrire
+                        </button>}
                 </article>
                 <article className="tile is-child notification is-light">
                   <p className="title">Participants</p>
                   <hr />
                   <div>
-                    {this.state.participants.length
-                      ? this.state.participants.map((p, i) => {
+                    {event.participants.length
+                      ? event.participants.map((p, i) => {
                           return (
                             <figure
                               className="image is-64x64"
                               key={i}
                               style={{
-                                'border-radius': '50%',
-                                overflow: 'hidden'
+                                borderRadius: '50%',
+                                overflow: 'hidden',
+                                display: 'inline-block',
+                                margin: '0px 10px'
                               }}
                             >
                               <img
@@ -145,4 +171,8 @@ class Item extends Component {
   }
 }
 
-export default Item;
+const mapStateToProps = state => {
+  return { ...state.user };
+};
+
+export default connect(mapStateToProps)(Item);
