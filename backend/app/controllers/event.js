@@ -9,7 +9,8 @@ module.exports = {
   },
 
   listAllEvents: (req, res) => {
-    Event.find({})
+    Event.find({ date: { $gte: new Date() } })
+      .sort({ date: 1 })
       .then(data => {
         return res.json(data);
       })
@@ -21,6 +22,7 @@ module.exports = {
 
   getOwnEvents: (req, res) => {
     Event.find({ user_id: req.uid })
+      .sort({ date: -1 })
       .then(data => {
         return res.json(data);
       })

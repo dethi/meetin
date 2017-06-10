@@ -51,9 +51,7 @@ module.exports = {
 
   getOwnHistory: (req, res) => {
     // FIXME: remove this when fixed
-    User.find({ uid: { $ne: req.user.uid } }, null, {
-      sort: { displayName: 1 }
-    })
+    User.find({ uid: { $ne: req.user.uid } })
       .then(data => {
         return res.json(data);
       })
