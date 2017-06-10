@@ -33,13 +33,10 @@ module.exports = {
   },
 
   getEventById: (req, res) => {
-    console.log(req.params);
-
     Event.findById(req.params.id)
       .populate('owner')
       .populate('participants')
       .then(data => {
-        console.log(data);
         return res.json(data);
       })
       .catch(error => {

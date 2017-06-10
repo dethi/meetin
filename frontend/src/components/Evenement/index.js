@@ -17,14 +17,15 @@ class Evenement extends Component {
       title: null,
       participants: [],
       max_participants: 2,
-      description: '',
-      category: '',
+      description: null,
+      category: null,
       date: moment(),
       hour: '',
       minutes: '',
       time: '',
       address: '',
-      redirect: false
+      redirect: false,
+      error: false
     };
   }
 
@@ -58,11 +59,14 @@ class Evenement extends Component {
 
   sendInformation = () => {
     getOwnInfos().then(result_id => {
-      if (result_id && this.state) {
-        const result = addEvent(result_id._id, this.state);
-        if (result) {
-          this.setState({ redirect: true });
-        }
+      if (result_id) {
+        addEvent(result_id._id, this.state).then(result => {
+          if (result) {
+            this.setState({ redirect: true });
+          } else {
+            this.setState({ error: true });
+          }
+        });
       }
     });
   };
@@ -74,6 +78,10 @@ class Evenement extends Component {
       <div>
         <TitleBar title="Hello" />
         <div className="container">
+          {this.state.error &&
+            <div className="notification is-danger box-error">
+              Une erreur s'est produite. Veuillez vérifier vos informations.
+            </div>}
 
           <div className="columns">
             <div className="column is-half is-offset-one-quarter">

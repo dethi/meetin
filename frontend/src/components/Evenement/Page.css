@@ -6,3 +6,9 @@
 .select--property {
   width: 100%;
 }
+
+.box-error {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  width: 60% !important;
+}
