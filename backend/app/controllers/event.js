@@ -90,7 +90,10 @@ module.exports = {
       req.body.description == null ||
       req.body.max_participants == null ||
       req.body.category == null ||
-      req.body.owner == null
+      req.body.owner == null ||
+      req.body.address == null ||
+      req.body.lng == null ||
+      req.body.lat == null
     ) {
       return res.sendStatus(500);
     }
@@ -104,7 +107,9 @@ module.exports = {
       category: req.body.category,
       address: req.body.address,
       date: req.body.date,
-      time: req.body.time
+      time: req.body.time,
+      lat: req.body.lat,
+      lng: req.body.lng
     }).save();
 
     return res.sendStatus(200);

@@ -26,7 +26,9 @@ class Evenement extends Component {
       time: '',
       address: '',
       redirect: false,
-      error: false
+      error: false,
+      lat: '',
+      lng: ''
     };
   }
 
@@ -56,6 +58,14 @@ class Evenement extends Component {
 
   handleChangeMinute = event => {
     this.setState({ minutes: event.target.value });
+  };
+
+  handleAdresse = event => {
+    this.setState({
+      address: event.formatted_address,
+      lat: event.geometry.location.lat(),
+      lng: event.geometry.location.lng()
+    });
   };
 
   sendInformation = () => {
@@ -117,9 +127,7 @@ class Evenement extends Component {
                         <div className="control">
                           <Autocomplete
                             style={{ width: '100%' }}
-                            onPlaceSelected={place => {
-                              console.log(place);
-                            }}
+                            onPlaceSelected={this.handleAdresse}
                             types={['establishment', 'geocode']}
                             componentRestrictions={{ country: 'fr' }}
                             className="input"
@@ -127,7 +135,6 @@ class Evenement extends Component {
                         </div>
                       </div>
                     </div>
-
                   </div>
 
                   <div className="field is-horizontal">

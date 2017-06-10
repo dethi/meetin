@@ -12,6 +12,8 @@ var eventSchema = new Schema({
   description: String,
   category: String,
   address: String,
+  lat: Number,
+  lng: Number,
   date: Date,
   time: String
 });
