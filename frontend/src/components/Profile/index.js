@@ -127,10 +127,14 @@ class Profile extends Component {
                     </figure>
                   </article>
                 </div>
-                <div className="box-padded">
-                  <article className="tile is-child notification is-danger">
-                    <p className="title">Infos</p>
+              </div>
+              <div className="tile is-parent">
+                <article className="tile is-child">
+                  <div className="bottom-spaced">
+                    <p className="title">Hey, I'm {user.displayName}</p>
                     <hr />
+                  </div>
+                  <div className="bottom-spaced">
                     {this.state.disabled
                       ? <div>
                           <div>
@@ -139,12 +143,13 @@ class Profile extends Component {
                             </span>
                             {user.email}
                           </div>
-                          <div>
-                            <span className="icon is-small  margin-text">
-                              <i className="fa fa-phone" />
-                            </span>
-                            {user.phone}
-                          </div>
+                          {user.phone &&
+                            <div>
+                              <span className="icon is-small  margin-text">
+                                <i className="fa fa-phone" />
+                              </span>
+                              {user.phone}
+                            </div>}
                         </div>
                       : <div className="field">
                           <p className="control has-icons-left">
@@ -160,14 +165,6 @@ class Profile extends Component {
                             </span>
                           </p>
                         </div>}
-                  </article>
-                </div>
-              </div>
-              <div className="tile is-parent">
-                <article className="tile is-child">
-                  <div className="bottom-spaced">
-                    <p className="title">Hey, I'm {user.displayName}</p>
-                    <hr />
                   </div>
                   <div className="bottom-spaced">
                     <p className="title">Passions</p>
