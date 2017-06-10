@@ -59,6 +59,15 @@ class Profile extends Component {
     });
   };
 
+  handleChangeName = event => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        displayName: event.target.value
+      }
+    });
+  };
+
   handleChangePhone = event => {
     this.setState({
       user: {
@@ -71,7 +80,8 @@ class Profile extends Component {
   handleSendInformation = () => {
     updateProfil({
       description: this.state.user.description,
-      phone: this.state.user.phone
+      phone: this.state.user.phone,
+      displayName: this.state.user.displayName
     });
 
     this.props.dispatch(userAction.updateInfos(this.state.user));
@@ -130,10 +140,23 @@ class Profile extends Component {
               </div>
               <div className="tile is-parent">
                 <article className="tile is-child">
-                  <div className="bottom-spaced">
-                    <p className="title">Hey, I'm {user.displayName}</p>
-                    <hr />
-                  </div>
+                  {this.state.disabled
+                    ? <div className="bottom-spaced">
+                        <p className="title">Hey, I'm {user.displayName}</p>
+                        <hr />
+                      </div>
+                    : <div className="field">
+                        <p className="control">
+                          <input
+                            className="input is-small"
+                            type="text"
+                            placeholder="Votre nom"
+                            defaultValue={user.displayName}
+                            onChange={this.handleChangeName}
+                          />
+                        </p>
+                        <hr />
+                      </div>}
                   <div className="bottom-spaced">
                     {this.state.disabled
                       ? <div>

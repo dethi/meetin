@@ -30,7 +30,6 @@ class Item extends Component {
 
   handleSignToEvent() {
     console.log('click');
-    console.log(this.state)
   }
 
   render() {

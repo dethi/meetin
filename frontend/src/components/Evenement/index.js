@@ -38,7 +38,6 @@ class Evenement extends Component {
 
   handleChangeTitle = event => {
     this.setState({ title: event.target.value });
-    console.log(this.state);
   };
 
   handleChangeDesc = event => {
@@ -55,15 +54,15 @@ class Evenement extends Component {
 
   handleChangeMinute = event => {
     this.setState({ minutes: event.target.value });
-
-    console.log(this.state);
   };
 
   sendInformation = () => {
     getOwnInfos().then(result_id => {
-      const result = AddEvent(result_id._id, this.state);
-      if (result) {
-        this.setState({ redirect: true });
+      if (result_id && this.state) {
+        const result = AddEvent(result_id._id, this.state);
+        if (result) {
+          this.setState({ redirect: true });
+        }
       }
     });
   };
