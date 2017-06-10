@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import TitleBar from './../TitleBar';
-import { getMatchSuggest } from './../../api';
+import { addMatch, getMatchSuggest } from './../../api';
 
 import './Discover.css';
 
@@ -64,50 +64,54 @@ class Discover extends Component {
 
     this.state = {
       cardSelected: null,
-      user: null
+      matchedUser: null
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     getMatchSuggest().then(matchedUser => {
-      console.log(matchedUser);
-      this.setState({ user: matchedUser });
+      this.setState({ matchedUser: matchedUser });
     });
   }
 
   toggleCard = e => {
     this.setState({ cardSelected: e });
+
+    const { matchedUser } = this.state;
+    addMatch(matchedUser._id).then(ok => {
+      // DO NOTHING
+    });
   };
 
   render() {
-    const { user } = this.state;
+    const { matchedUser } = this.state;
 
     return (
       <div>
         <TitleBar title="Découvrir" />
         <div className="columns">
-          {user &&
+          {matchedUser &&
             <div className="column is-10 is-center">
               <CardItem
                 cardType="left"
                 isSelected={this.state.cardSelected === 0}
                 hasSelected={this.state.cardSelected !== null}
                 onClick={() => this.toggleCard(0)}
-                user={user}
+                user={matchedUser}
               />
               <CardItem
                 cardType="center"
                 isSelected={this.state.cardSelected === 1}
                 hasSelected={this.state.cardSelected !== null}
                 onClick={() => this.toggleCard(1)}
-                user={user}
+                user={matchedUser}
               />
               <CardItem
                 cardType="right"
                 isSelected={this.state.cardSelected === 2}
                 hasSelected={this.state.cardSelected !== null}
                 onClick={() => this.toggleCard(2)}
-                user={user}
+                user={matchedUser}
               />
             </div>}
         </div>

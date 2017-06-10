@@ -35,26 +35,37 @@ export function getEventById(id) {
 export function updateProfil(infos) {
   return axios
     .post('/me/infos', infos)
-    .then(function(response) {
-      console.log(response);
+    .then(res => {
+      return res.status === 200;
     })
-    .catch(function(error) {
-      console.log(error);
+    .catch(err => {
+      return false;
     });
 }
 
-export function AddEvent(uid, json) {
+export function addEvent(id, json) {
   return axios
     .post('/event/new', {
       ...json,
-      owner: uid,
+      owner: id,
       time: json.hour + 'H' + json.minutes
     })
-    .then(function(response) {
-      return response.status === 200;
+    .then(res => {
+      return res.status === 200;
     })
-    .catch(function(error) {
-      console.log(error);
+    .catch(err => {
+      return false;
+    });
+}
+
+export function addMatch(matchedId) {
+  return axios
+    .post('/match/new', { match_user: matchedId })
+    .then(res => {
+      return res.status === 200;
+    })
+    .catch(err => {
+      return false;
     });
 }
 

@@ -6,7 +6,7 @@ import './Page.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-import { AddEvent, getOwnInfos } from './../../api';
+import { addEvent, getOwnInfos } from './../../api';
 import { Redirect } from 'react-router-dom';
 
 class Evenement extends Component {
@@ -59,7 +59,7 @@ class Evenement extends Component {
   sendInformation = () => {
     getOwnInfos().then(result_id => {
       if (result_id && this.state) {
-        const result = AddEvent(result_id._id, this.state);
+        const result = addEvent(result_id._id, this.state);
         if (result) {
           this.setState({ redirect: true });
         }

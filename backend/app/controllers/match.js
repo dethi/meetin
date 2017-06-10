@@ -6,28 +6,20 @@ var Match = require('../models/match');
 
 module.exports = {
   newMatch: (req, res) => {
-    if (
-      req.body == null ||
-      req.body.owner == null ||
-      req.body.match_user == null
-    ) {
+    if (req.body == null || req.body.match_user == null) {
       return res.sendStatus(500);
     }
 
-    if (req.user.uid !== req.body.owner) {
-      return res.sendStatus(403);
-    }
-
     new Match({
-      owner: req.body.owner,
+      owner: req.user._id,
       match_user: req.body.match_user,
       date: new Date()
     })
       .save()
-      .then(() => {
+      .then(obj => {
         return res.sendStatus(200);
       })
-      .catch(() => {
+      .catch(err => {
         return res.sendStatus(500);
       });
   },
