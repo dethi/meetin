@@ -24,27 +24,31 @@ module.exports = {
       var list = [
         new Event({
           owner: users['Albert Einstein']._id,
-          participants: [],
+          participants: ['Albert Einstein'],
           max_participants: 10,
           title: 'Petit basket',
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt odio consectetur, dapibus ex. Suspendisse auctor fringilla elit vitae bibendum. Etiam vel risus eget nibh imperdiet dapibus. In hac habitasse platea dictumst.',
-          category: '',
+          category: 'basket',
           address: '14 rue Voltaire, Kremlin Bicetre 94270, FRANCE',
           date: new Date('2017-06-21'),
-          time: '10h30'
+          time: '10h30',
+          lat: 48.8156781,
+          lng: 2.3628608000000213
         }),
         new Event({
           owner: users['Bill Gates']._id,
-          participants: ['Albert Einstein'],
+          participants: ['Bill Gates', 'Albert Einstein'],
           max_participants: 20,
-          title: "Restaurant de fin d'année",
+          title: "Rugby de fin d'année",
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam risus porta, tincidunt odio consectetur, dapibus ex. Suspendisse auctor fringilla elit vitae bibendum. Etiam vel risus eget nibh imperdiet dapibus. In hac habitasse platea dictumst.',
-          category: '',
+          category: 'rugby',
           address: '14 rue Voltaire, Kremlin Bicetre 94270, FRANCE',
           date: new Date('2017-12-30'),
-          time: '21h'
+          time: '21h',
+          lat: 48.8156781,
+          lng: 2.3628608000000213
         })
       ];
 

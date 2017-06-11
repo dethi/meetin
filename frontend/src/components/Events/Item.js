@@ -119,13 +119,13 @@ class Item extends Component {
                   </div>
                 </article>
               </div>
-              <div className="tile is-parent is-vertical is-3">
-                <article className="tile is-child">
+              <div className="is-parent is-vertical is-3">
+                <article className="bottom-spaced is-child">
                   <figure className="image is-square">
                     <img src={event.owner.photoURL} alt="profile_picture" />
                   </figure>
                 </article>
-                <article className="tile is-child">
+                <article className="bottom-spaced is-child">
                   {isSuscribed
                     ? <button
                         className="button is-fullwidth box-padded subtitle is-4 is-danger"
@@ -144,7 +144,10 @@ class Item extends Component {
                           S'inscrire
                         </button>}
                 </article>
-                <article className="tile is-child notification is-light">
+                <article
+                  className=" is-child notification is-light"
+                  style={{ width: '240px' }}
+                >
                   <p className="title">Participants</p>
                   <hr />
                   <div>

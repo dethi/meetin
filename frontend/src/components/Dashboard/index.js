@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dateformat from 'dateformat';
 import TitleBar from './../TitleBar';
 import classNames from 'classnames';
 
@@ -40,7 +41,7 @@ class EventItem extends Component {
                   <i className="fa fa-calendar" aria-hidden="true" />
                 </span>
                 <span>
-                  <small>{this.props.date}</small>
+                  <small>{dateformat(this.props.date, 'dd/mm/yyyy')}</small>
                 </span>
                 <span className="hspaced">-</span>
                 <small>{this.props.time}</small>

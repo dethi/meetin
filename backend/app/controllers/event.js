@@ -100,7 +100,7 @@ module.exports = {
 
     new Event({
       owner: req.body.owner,
-      participants: req.body.participants,
+      participants: [req.user._id],
       max_participants: req.body.max_participants,
       title: req.body.title,
       description: req.body.description,

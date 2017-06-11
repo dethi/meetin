@@ -41,7 +41,7 @@ class CardItem extends Component {
                 <div className="media">
                   <div className="media-content">
                     <p className="subtitle is-3 has-text-centered">
-                      Share <b>a Pizza</b>
+                      Share <b>something</b>
                     </p>
                     <p className="title is-5 has-text-right">
                       with {user.displayName}
