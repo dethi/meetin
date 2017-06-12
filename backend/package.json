@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
     "express": "^4.15.3",
     "express-minify": "^0.2.0",
     "firebase-admin": "^5.0.0",

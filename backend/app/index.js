@@ -3,6 +3,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const minify = require('express-minify');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const isAuthenticated = require('./middlewares/isAuthenticated');
 const createUserIfNotExist = require('./middlewares/createUserIfNotExist');
@@ -11,6 +12,7 @@ const users = require('./controllers/user');
 const matchs = require('./controllers/match');
 
 const app = Express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(minify());
 app.use(isAuthenticated);
