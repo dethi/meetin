@@ -197,7 +197,7 @@ class Profile extends Component {
                         </div>}
                   </div>
                   <div className="bottom-spaced">
-                    <p className="title">Passions</p>
+                    <p className="title">Description</p>
                     <hr />
                     {this.state.disabled
                       ? <div
