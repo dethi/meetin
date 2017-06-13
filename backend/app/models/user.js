@@ -9,7 +9,8 @@ var userSchema = new Schema({
   displayName: String,
   photoURL: String,
   description: String,
-  phone: String
+  phone: String,
+  pushNotification: Object
 });
 
 module.exports = mongoose.model('user', userSchema);

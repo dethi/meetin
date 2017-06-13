@@ -16,6 +16,7 @@
     "mongodb": "^2.2.27",
     "mongoose": "^4.7.2",
     "nodemon": "^1.11.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "web-push": "^3.2.2"
   }
 }

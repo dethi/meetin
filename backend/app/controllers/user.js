@@ -33,7 +33,6 @@ module.exports = {
   },
 
   updateOwnInfos: (req, res) => {
-    // FIXME: Validation of the data ?
     User.findOneAndUpdate(
       { uid: req.user.uid },
       { $set: req.body },
@@ -68,6 +67,21 @@ module.exports = {
         return res.json(users);
       })
       .catch(error => {
+        return res.sendStatus(500);
+      });
+  },
+
+  updatePushNotification: (req, res) => {
+    User.findOneAndUpdate(
+      { uid: req.user.uid },
+      { $set: req.body },
+      { new: false }
+    )
+      .then(user => {
+        return res.json(user);
+      })
+      .catch(error => {
+        console.error(error);
         return res.sendStatus(500);
       });
   }

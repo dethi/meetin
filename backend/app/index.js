@@ -34,6 +34,8 @@ app.post('/api/me/infos', users.updateOwnInfos);
 app.get('/api/me/events', events.getOwnEvents);
 /* GET user match history */
 app.get('/api/me/history', users.getOwnHistory);
+/* POST user notification token */
+app.post('/api/me/push', users.updatePushNotification);
 
 /* POST create new event */
 app.post('/api/event/new', events.createEvent);
