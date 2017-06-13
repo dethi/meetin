@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dateformat from 'dateformat';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import { Link } from 'react-router-dom';
 
 import TitleBar from './../TitleBar';
 import './Event.css';
@@ -121,9 +122,11 @@ class Item extends Component {
               </div>
               <div className="is-parent is-vertical is-3">
                 <article className="bottom-spaced is-child">
-                  <figure className="image is-square">
-                    <img src={event.owner.photoURL} alt="profile_picture" />
-                  </figure>
+                  <Link to={'/user/' + event.owner.uid}>
+                    <figure className="image is-square">
+                      <img src={event.owner.photoURL} alt="profile_picture" />
+                    </figure>
+                  </Link>
                 </article>
                 <article className="bottom-spaced is-child">
                   {isSuscribed
@@ -154,22 +157,24 @@ class Item extends Component {
                     {event.participants.length
                       ? event.participants.map((p, i) => {
                           return (
-                            <figure
-                              className="image is-64x64"
-                              key={i}
-                              style={{
-                                borderRadius: '50%',
-                                overflow: 'hidden',
-                                display: 'inline-block',
-                                margin: '0px 10px'
-                              }}
-                            >
-                              <img
-                                src={p.photoURL}
-                                alt={p.displayName}
-                                style={{ width: '100%', height: '100%' }}
-                              />
-                            </figure>
+                            <Link to={'/user/' + p.uid}>
+                              <figure
+                                className="image is-64x64"
+                                key={i}
+                                style={{
+                                  borderRadius: '50%',
+                                  overflow: 'hidden',
+                                  display: 'inline-block',
+                                  margin: '0px 10px'
+                                }}
+                              >
+                                <img
+                                  src={p.photoURL}
+                                  alt={p.displayName}
+                                  style={{ width: '100%', height: '100%' }}
+                                />
+                              </figure>
+                            </Link>
                           );
                         })
                       : <div className="has-text-centered">
