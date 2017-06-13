@@ -52,7 +52,7 @@ app.get('/api/match/suggest', matchs.suggestMatch);
 app.post('/api/match/new', matchs.newMatch);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/meetin', function(err) {
+mongoose.connect(process.env.MONGODB_URI, function(err) {
   if (err) throw err;
   app.listen(4242);
 });

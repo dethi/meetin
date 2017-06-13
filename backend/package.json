@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app/index.js",
-    "populate": "node app/populate/index.js"
+    "start": "MONGODB_URI=mongodb://127.0.0.1:27017/meetin nodemon app/index.js",
+    "populate": "MONGODB_URI=mongodb://127.0.0.1:27017/meetin node app/populate/index.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
