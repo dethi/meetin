@@ -54,5 +54,5 @@ app.post('/api/match/new', matchs.newMatch);
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, function(err) {
   if (err) throw err;
-  app.listen(4242);
+  app.listen(process.env.PORT || 4242);
 });
