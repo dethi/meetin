@@ -18,7 +18,6 @@ module.exports = {
   },
 
   getInfosById: (req, res) => {
-    console.log(req.params.uid);
     User.findOne({ uid: req.params.uid })
       .then(data => {
         return res.json(data);

@@ -8,6 +8,7 @@ import Loading from './Loading';
 import Navbar from './Navbar';
 import Login from './Login';
 import Profile from './Profile';
+import User from './User';
 import Event from './Events/Item';
 import EventList from './Events/List';
 import History from './History';
@@ -41,6 +42,12 @@ const App = ({ isLoading, isLogged }) =>
               exact
               path="/discover"
               component={Discover}
+              isLogged={isLogged}
+            />
+            <PrivateRoute
+              exact
+              path="/user/:id"
+              component={User}
               isLogged={isLogged}
             />
             <PrivateRoute
