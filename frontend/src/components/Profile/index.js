@@ -6,6 +6,7 @@ import TitleBar from './../TitleBar';
 
 import userAction from './../../actions/user';
 import { getOwnInfos, updateProfil } from './../../api';
+import { subscribeUser, unsubscribeUser } from './../../pushNotification';
 import './Profil.css';
 
 class Profile extends Component {
@@ -95,6 +96,22 @@ class Profile extends Component {
     });
   };
 
+  togglePushNotification = () => {
+    const pushNotification = !this.state.user.pushNotification;
+    if (pushNotification) {
+      subscribeUser();
+    } else {
+      unsubscribeUser();
+    }
+
+    this.setState({
+      user: {
+        ...this.state.user,
+        pushNotification: pushNotification
+      }
+    });
+  };
+
   render() {
     const { isLoading, disabled, user } = this.state;
 
@@ -102,6 +119,10 @@ class Profile extends Component {
       <div>
         <TitleBar title="Profile" />
         <div className="section container">
+          <a className="button" onClick={this.togglePushNotification}>
+            {user.pushNotification ? 'Désactiver' : 'Activer'} les notifications
+          </a>
+
           {!this.state.disabled &&
             <a
               className="tag button is-medium is-pulled-right is-danger is-modifier"

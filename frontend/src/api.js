@@ -58,6 +58,17 @@ export function updateProfil(infos) {
     });
 }
 
+export function updatePushNotification(subscription) {
+  return axios
+    .post('/api/me/push', { pushNotification: subscription })
+    .then(res => {
+      return res.status === 200;
+    })
+    .catch(err => {
+      return false;
+    });
+}
+
 export function addEvent(id, json) {
   return axios
     .post('/api/event/new', {

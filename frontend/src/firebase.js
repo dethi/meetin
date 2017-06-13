@@ -34,7 +34,7 @@ firebase.auth().onIdTokenChanged(user => {
 
   if (loading) {
     loading = false;
-    store.dispatch(appAction.ready());
+    store.dispatch(appAction.appReady());
   }
 });
 

@@ -89,7 +89,7 @@ const App = ({ isLoading, isLogged }) =>
 
 const mapStateToProps = state => {
   return {
-    isLoading: !state.ready,
+    isLoading: !state.app.appReady,
     isLogged: state.user !== null
   };
 };

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import axios from 'axios';
 
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
+import pushNotification from './pushNotification';
 import store from './store';
 import './firebase';
 
@@ -20,4 +20,5 @@ const Root = () =>
 
 const rootEl = document.getElementById('root');
 ReactDOM.render(<Root />, rootEl);
-registerServiceWorker();
+
+pushNotification.register();
